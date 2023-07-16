@@ -15,7 +15,8 @@ class CityModel extends Model
 
     protected $fillable = [
         'name',
-        'state'
+        'state',
+        'active'
     ];
 
     public function address() {

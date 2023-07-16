@@ -37,4 +37,8 @@ class GymMemberModel extends Model
     public function address() {
         return $this->belongsTo(AddressModel::class, 'id_address');
     }
+
+    public function billing() {
+        return $this->hasMany(BillingModel::class, 'id_gym_member');
+    }
 }
