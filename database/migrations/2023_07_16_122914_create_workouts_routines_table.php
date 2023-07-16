@@ -8,11 +8,9 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('billings', function (Blueprint $table) {
+        Schema::create('workouts_routines', function (Blueprint $table) {
             $table->uuid('id')->unique()->primary();
-            $table->date('invoice_date')->nullable(false);
-            $table->date('due_date')->nullable(false);
-            $table->date('payment_date')->default(null);
+            $table->string('name')->nullable(false);
             $table->foreignUuid('id_gym_member')->constrained('gym_members')->onDelete('cascade')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
@@ -21,6 +19,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('billings');
+        Schema::dropIfExists('workouts_routines');
     }
 };

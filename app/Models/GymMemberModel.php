@@ -41,4 +41,8 @@ class GymMemberModel extends Model
     public function billing() {
         return $this->hasMany(BillingModel::class, 'id_gym_member');
     }
+
+    public function workout_routine() {
+        return $this->hasMany(WorkoutRoutineModel::class, 'id_gym_member');
+    }
 }
