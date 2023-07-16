@@ -22,4 +22,8 @@ class EnrollmentModel extends Model
     public function type() {
         return $this->belongsTo(TypeModel::class, 'id_type');
     }
+
+    public function gym_member() {
+        return $this->hasMany(GymMemberModel::class, 'id_enrollment');
+    }
 }
