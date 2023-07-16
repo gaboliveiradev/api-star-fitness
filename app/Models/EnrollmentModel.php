@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TypeModel extends Model
+class EnrollmentModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'types';
+    protected $table = 'enrollments';
 
     public $incrementing = false;
 
     protected $fillable = [
-        'name',
-        'number_of_days',
-        'price',
+        'enrollment_date',
+        'id_type',
         'active'
     ];
 
-    public function enrollment() {
-        return $this->hasMany(EnrollmentModel::class, 'id_type');
+    public function type() {
+        return $this->belongsTo(TypeModel::class, 'id_type');
     }
 }
