@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkoutRoutineModel extends Model
+class DietModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'workouts_routines';
+    protected $table = 'diets';
 
     public $incrementing = false;
 
@@ -23,7 +23,7 @@ class WorkoutRoutineModel extends Model
         return $this->belongsTo(GymMemberModel::class, 'id_gym_member');
     }
 
-    public function routine_exercise_assoc() {
-        return $this->hasMany(RoutineExerciseAssocModel::class, 'id_workout_routine');
+    public function meal() {
+        return $this->hasMany(MealModel::class, 'id_meal');
     }
 }

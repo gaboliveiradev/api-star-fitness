@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ExerciseModel extends Model
+class FoodModel extends Model
 {
     use HasFactory;
 
@@ -15,13 +15,14 @@ class ExerciseModel extends Model
 
     protected $fillable = [
         'name',
-        'exercise_gif',
-        'equipment_gym_photo',
-        'muscle_groups',
+        'carbohydrates',
+        'proteins',
+        'fats',
+        'calories',
         'active'
     ];
 
-    public function routine_exercise_assoc() {
-        return $this->hasMany(RoutineExerciseAssocModel::class, 'id_workout_routine');
+    public function meal_food_assoc() {
+        return $this->hasMany(MealFoodAssocModel::class, 'id_food');
     }
 }
