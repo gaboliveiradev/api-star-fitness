@@ -45,4 +45,8 @@ class GymMemberModel extends Model
     public function workout_routine() {
         return $this->hasMany(WorkoutRoutineModel::class, 'id_gym_member');
     }
+
+    public function evolution() {
+        return $this->hasMany(EvolutionModel::class, 'id_gym_member');
+    }
 }

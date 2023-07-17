@@ -24,4 +24,8 @@ class ExerciseModel extends Model
     public function routine_exercise_assoc() {
         return $this->hasMany(RoutineExerciseAssocModel::class, 'id_workout_routine');
     }
+
+    public function evolution_exercise_assoc() {
+        return $this->hasMany(EvolutionExerciseAssocModel::class, 'id_exercise');
+    }
 }
