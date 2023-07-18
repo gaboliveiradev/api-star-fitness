@@ -9,7 +9,7 @@ class FoodModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'exercises';
+    protected $table = 'foods';
 
     public $incrementing = false;
 
