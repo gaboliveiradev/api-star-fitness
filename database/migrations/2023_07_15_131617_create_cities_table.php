@@ -12,7 +12,7 @@ return new class extends Migration
             $table->uuid('id')->unique()->primary();
             $table->string('name', 100)->nullable(false);
             $table->string('state', 2)->nullable(false);
-            $table0->boolean('active')->nullable(false)->default(true);
+            $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });
     }
