@@ -3,13 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class GymMemberModel extends Model
+class GymMemberModel extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'cities';
+    protected $table = 'gym_member';
+    protected $keyType = 'uuid';
 
     public $incrementing = false;
 
@@ -28,6 +31,15 @@ class GymMemberModel extends Model
         'id_enrollment',
         'id_address',
         'active'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 
     public function enrollment() {

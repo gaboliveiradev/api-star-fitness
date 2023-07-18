@@ -12,6 +12,7 @@ return new class extends Migration
             $table->uuid('id')->unique()->primary();
             $table->string('name')->nullable(false);
             $table->string('email')->nullable(false);
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable(false);
             $table->string('document', 11)->nullable(false);
             $table->string('phone', 11)->nullable(false);
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->foreignUuid('id_enrollment')->constrained('enrollments')->onDelete('cascade')->nullable(false);
             $table->foreignUuid('id_address')->constrained('adresses')->onDelete('cascade')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
+            $table->rememberToken();
             $table->timestamps();
         });
     }
