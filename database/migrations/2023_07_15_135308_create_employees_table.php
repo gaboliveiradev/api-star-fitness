@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('document', 11)->nullable(false);
             $table->string('cref', 15)->nullable(false);
             $table->date('birthday')->nullable(false);
-            $table->string('observation', 1000)->nullable(false);
+            $table->string('observation', 1000)->nullable(true);
             $table->foreignUuid('id_address')->constrained('adresses')->onDelete('cascade')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->rememberToken();
