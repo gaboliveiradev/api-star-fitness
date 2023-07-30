@@ -15,8 +15,8 @@ class CityController extends Controller
         $this->cityModel = new CityModel();
     }
 
-    public function create(CreateCityRequest $request) {
-
+    public function create(CreateCityRequest $request) 
+    {
         $city = $this->cityModel::create($request->all());
 
         return $this->success('City Created', $city, 201);

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\AddressController;
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -14,6 +15,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/login/employee', [AuthController::class, 'loginAsEmployee']);
 
-    // City
-
-    Route::post('/city', [CityController::class, 'create']);
+Route::post('/city', [CityController::class, 'create']);
+Route::post('/address', [AddressController::class, 'create']);
