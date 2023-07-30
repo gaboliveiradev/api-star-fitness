@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('phone', 11)->nullable(false);
             $table->date('birthday')->nullable(false);
             $table->string('gender', 1)->nullable(false);
-            $table->string('height_cm')->default(null);
-            $table->string('weight_kg')->default(null);
-            $table->string('photo_url')->default(null);
-            $table->string('observation')->default(null);
+            $table->string('height_cm')->nullable(true);
+            $table->string('weight_kg')->nullable(true);
+            $table->string('photo_url')->nullable(true);
+            $table->string('observation')->nullable(true);
             $table->foreignUuid('id_enrollment')->constrained('enrollments')->onDelete('cascade')->nullable(false);
             $table->foreignUuid('id_address')->constrained('adresses')->onDelete('cascade')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
