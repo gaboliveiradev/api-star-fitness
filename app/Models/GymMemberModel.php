@@ -11,7 +11,7 @@ class GymMemberModel extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'gym_member';
+    protected $table = 'gym_members';
     protected $keyType = 'uuid';
 
     public $incrementing = false;
