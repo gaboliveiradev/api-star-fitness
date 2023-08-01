@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function loginAsEmployee(Request $request) {
         $credential = $request->validate([
-            'email' => ['required', 'email', 'string'],
+            'email' => ['required', 'string'],
             'password' => ['required'],
             'remember' => ['boolean']
         ]);
@@ -24,15 +24,15 @@ class AuthController extends Controller
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user = Auth::user();
-        $token = $user->createToken(env('APP_NAME'))->plainTextToken;
+        $user_employee = Auth::user();
+        $token = $user_employee->createToken(env('APP_NAME'))->plainTextToken;
 
-        unset($user['active'], $user['created_at'], $user['email_verified_at'], $user['updated_at']);
+        unset($user_employee['id'], $user_employee['active'], $user_employee['created_at'], $user_employee['email_verified_at'], $user_employee['updated_at']);
 
         return response()->json([
-            'user' => $user,
+            'employee' => $user_employee,
             'token' => $token
-        ], 200);
+        ]);
     }
 
     public function loginAsGymMember(Request $request)
