@@ -12,17 +12,32 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\AddressController;
 
 Route::middleware('auth:sanctum')->group(function () {
+    // City
 
+    Route::post('/city', [CityController::class, 'create']);
+
+    // Address
+
+    Route::post('/address', [AddressController::class, 'create']);
+
+    // Employee
+
+    Route::post('/employee', [EmployeeController::class, 'create']);
+
+    // Gym Member
+
+    Route::post('/gym-member', [GymMemberController::class, 'create']);
+
+    // Type
+
+    Route::post('/type', [TypeController::class, 'create']);
+
+    // Enrollment
+
+    Route::post('/enrollment', [EnrollmentController::class, 'create']);
 });
 
 // Login
 
 Route::post('/login/employee', [AuthController::class, 'loginAsEmployee']);
-
-Route::post('/city', [CityController::class, 'create']);
-Route::post('/address', [AddressController::class, 'create']);
-Route::post('/employee', [EmployeeController::class, 'create']);
-Route::post('/gym-member', [GymMemberController::class, 'create']);
-
-Route::post('/type', [TypeController::class, 'create']);
-Route::post('/enrollment', [EnrollmentController::class, 'create']);
+Route::post('/login/gym-member', [AuthController::class, 'loginAsGymMember']);
