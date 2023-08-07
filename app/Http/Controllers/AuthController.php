@@ -32,7 +32,7 @@ class AuthController extends Controller
         return response()->json([
             'employee' => $user_employee,
             'token' => $token
-        ]);
+        ], 200);
     }
 
     public function loginAsGymMember(Request $request)

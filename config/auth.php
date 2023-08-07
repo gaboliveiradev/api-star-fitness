@@ -62,7 +62,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\GymMemberModel::class,
+            //'model' => App\Models\GymMemberModel::class,
+            'model' => App\Models\EmployeeModel::class,
         ],
 
         // 'users' => [
