@@ -20,11 +20,11 @@ class AuthController extends Controller
 
         unset($credential['remember']);
 
-        if (!Auth::guard('web')->attempt($credential, $remember)) {
+        if (!Auth::guard('employees')->attempt($credential, $remember)) {
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user_employee = Auth::guard('web')->user();
+        $user_employee = Auth::guard('employees')->user();
         $token = $user_employee->createToken(env('APP_NAME'))->plainTextToken;
 
         unset($user_employee['id'], $user_employee['active'], $user_employee['created_at'], $user_employee['email_verified_at'], $user_employee['updated_at']);
