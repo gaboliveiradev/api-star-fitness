@@ -38,7 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'employees',
+        ],
+
+        'gym-member' => [
+            'driver' => 'session',
+            'provider' => 'gym-member',
         ],
     ],
 
@@ -60,16 +65,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'gym-member' => [
             'driver' => 'eloquent',
             'model' => App\Models\GymMemberModel::class,
-            //'model' => App\Models\EmployeeModel::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\EmployeeModel::class,
+        ],
     ],
 
     /*

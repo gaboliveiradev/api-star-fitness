@@ -20,11 +20,11 @@ class AuthController extends Controller
 
         unset($credential['remember']);
 
-        if (!Auth::attempt($credential, $remember)) {
+        if (!Auth::guard('web')->attempt($credential, $remember)) {
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user_employee = Auth::user();
+        $user_employee = Auth::guard('web')->user();
         $token = $user_employee->createToken(env('APP_NAME'))->plainTextToken;
 
         unset($user_employee['id'], $user_employee['active'], $user_employee['created_at'], $user_employee['email_verified_at'], $user_employee['updated_at']);
@@ -47,11 +47,11 @@ class AuthController extends Controller
 
         unset($credential['remember']);
 
-        if (!Auth::attempt($credential, $remember)) {
+        if (!Auth::guard('gym-member')->attempt($credential, $remember)) {
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user_gymMember = Auth::user();
+        $user_gymMember = Auth::guard('gym-member')->user();
         $token = $user_gymMember->createToken(env('APP_NAME'))->plainTextToken;
 
         unset($user_gymMember['id'], $user_gymMember['active'], $user_gymMember['created_at'], $user_gymMember['email_verified_at'], $user_gymMember['updated_at']);
