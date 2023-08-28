@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'employees',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -36,14 +36,9 @@ return [
     */
 
     'guards' => [
-        'employees' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'employees',
-        ],
-
-        'gym-member' => [
-            'driver' => 'session',
-            'provider' => 'gym-member',
+            'provider' => 'persons',
         ],
     ],
 
@@ -65,14 +60,9 @@ return [
     */
 
     'providers' => [
-        'gym-member' => [
+        'persons' => [
             'driver' => 'eloquent',
-            'model' => App\Models\GymMemberModel::class,
-        ],
-    
-        'employees' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\EmployeeModel::class,
+            'model' => App\Models\PersonModel::class,
         ],
     ],
 

@@ -3,51 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class GymMemberModel extends Authenticatable
+class GymMemberModel extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     protected $table = 'gym_members';
-    protected $keyType = 'uuid';
 
     public $incrementing = false;
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'document',
-        'phone',
-        'birthday',
-        'gender',
+        'id_person',
         'height_cm',
         'weight_kg',
-        'photo_url',
         'observation',
         'id_enrollment',
-        'id_address',
         'active'
-    ];
-
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
     ];
 
     public function enrollment() {
         return $this->belongsTo(EnrollmentModel::class, 'id_enrollment');
     }
 
-    public function address() {
-        return $this->belongsTo(AddressModel::class, 'id_address');
+    public function id_person() {
+        return $this->belongsTo(PersonModel::class, 'id_person');
     }
 
     public function billing() {

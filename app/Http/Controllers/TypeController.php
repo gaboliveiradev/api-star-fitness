@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTypeRequest;
 use App\Models\TypeModel;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TypeController extends Controller
 {

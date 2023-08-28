@@ -20,9 +20,11 @@ use App\Models\MealFoodAssocModel;
 use App\Models\MealModel;
 use App\Models\MeasurementModel;
 use App\Models\PermissionModel;
+use App\Models\PersonModel;
 use App\Models\RoutineExerciseAssocModel;
 use App\Models\TypeModel;
 use App\Models\WorkoutRoutineModel;
+use App\Observers\PersonObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -81,6 +83,7 @@ class EventServiceProvider extends ServiceProvider
         RoutineExerciseAssocModel::observe(RoutineExerciseAssocObserver::class);
         TypeModel::observe(TypeObserver::class);
         WorkoutRoutineModel::observe(WorkoutRoutineObserver::class);
+        PersonModel::observe(PersonObserver::class);
     }
 
     /**

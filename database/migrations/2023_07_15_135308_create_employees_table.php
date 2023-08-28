@@ -10,17 +10,10 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->uuid('id')->unique()->primary();
-            $table->string('name', 150)->nullable(false);
-            $table->string('email', 150)->nullable(false);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password', 150)->nullable(false);
-            $table->string('document', 11)->nullable(false);
+            $table->foreignUuid('id_person')->constrained('persons')->onDelete('cascade')->nullable(false);
             $table->string('cref', 15)->nullable(false);
-            $table->date('birthday')->nullable(false);
             $table->string('observation', 1000)->nullable(true);
-            $table->foreignUuid('id_address')->constrained('adresses')->onDelete('cascade')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
-            $table->rememberToken();
             $table->timestamps();
         });
     }

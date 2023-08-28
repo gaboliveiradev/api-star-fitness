@@ -3,42 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class EmployeeModel extends Authenticatable
+class EmployeeModel extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
 
     protected $table = 'employees';
-    protected $keyType = 'uuid';
 
     public $incrementing = false;
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'document',
+        'id_person',
         'cref',
-        'birthday',
         'observation',
-        'id_address',
         'active'
     ];
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    public function address() {
-        return $this->belongsTo(AddressModel::class, 'id_address');
+    public function id_person() {
+        return $this->belongsTo(PersonModel::class, 'id_person');
     }
 
     public function access_group_employee_assoc() {
