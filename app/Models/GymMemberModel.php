@@ -15,15 +15,15 @@ class GymMemberModel extends Model
 
     protected $fillable = [
         'id_person',
+        'id_type_enrollment',
         'height_cm',
         'weight_kg',
         'observation',
-        'id_enrollment',
         'active'
     ];
 
-    public function enrollment() {
-        return $this->belongsTo(EnrollmentModel::class, 'id_enrollment');
+    public function type() {
+        return $this->belongsTo(TypeModel::class, 'id_type_enrollment');
     }
 
     public function id_person() {

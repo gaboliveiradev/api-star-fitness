@@ -21,7 +21,7 @@ class CreateGymMemberRequest extends FormRequest
             'photo_url' => ['string'],
             'observation' => ['string'],
             'id_address' => ['required', 'string'],
-            'id_enrollment' => ['required', 'string']
+            'id_type_enrollment' => ['required', 'string']
         ];
     }
 }

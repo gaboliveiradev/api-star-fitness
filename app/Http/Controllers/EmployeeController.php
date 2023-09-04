@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class EmployeeController extends Controller
 {
     public function create(CreateEmployeeRequest $request)
-    {
+    {   
         $person = PersonModel::create([
             'name' => $request->all()['name'],
             'email' => $request->all()['email'],
@@ -24,13 +24,24 @@ class EmployeeController extends Controller
             'id_address' => $request->all()['id_address'],
         ]);
 
-        $employee = EmployeeModel::create([
-            'id_person' => $person->id,
-            'cref' => $request->all()['cref'],
-            'observation' => $request->all()['observation'],
-        ]);
+        if(isset($request->all()['observation'])) {
+            $employee = EmployeeModel::create([
+                'id_person' => $person->id,
+                'cref' => $request->all()['cref'],
+                'observation' => $request->all()['observation'],
+            ]);
+    
+            $employee['person'] = $person;
+        }
 
-        $employee['person'] = $person;
+        if(!isset($request->all()['observation'])) {
+            $employee = EmployeeModel::create([
+                'id_person' => $person->id,
+                'cref' => $request->all()['cref'],
+            ]);
+    
+            $employee['person'] = $person;
+        }
 
         return $this->success('Employee Created', $employee, 201);
     }

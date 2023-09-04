@@ -10,10 +10,10 @@ return new class extends Migration {
         Schema::create('gym_members', function (Blueprint $table) {
             $table->uuid('id')->unique()->primary();
             $table->foreignUuid('id_person')->constrained('persons')->onDelete('cascade')->nullable(false);
+            $table->foreignUuid('id_type_enrollment')->constrained('types')->onDelete('cascade')->nullable(false);
             $table->string('height_cm')->nullable(true);
             $table->string('weight_kg')->nullable(true);
             $table->string('observation')->nullable(true);
-            $table->foreignUuid('id_enrollment')->constrained('enrollments')->onDelete('cascade')->nullable(false);
             $table->timestamps();
         });
     }

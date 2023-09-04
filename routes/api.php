@@ -11,7 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AddressController;
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
     // City
 
     Route::post('/city', [CityController::class, 'create']);
@@ -31,11 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
     // Type
 
     Route::post('/type', [TypeController::class, 'create']);
-
-    // Enrollment
-
-    Route::post('/enrollment', [EnrollmentController::class, 'create']);
-});
+    Route::get('/type', [TypeController::class, 'getAll']);
+//});
 
 // Login
 

@@ -15,6 +15,13 @@ class TypeController extends Controller
         $this->typeModel = new TypeModel();
     }
 
+    public function getAll()
+    {
+        $type = TypeModel::all(['*']);
+
+        return $this->success('Types', $type, 200);
+    }
+
     public function create(CreateTypeRequest $request)
     {
         $type = $this->typeModel::create($request->all());

@@ -20,7 +20,7 @@ class TypeModel extends Model
         'active'
     ];
 
-    public function enrollment() {
-        return $this->hasMany(EnrollmentModel::class, 'id_type');
+    public function gym_member() {
+        return $this->hasMany(GymMemberModel::class, 'id_type_enrollment');
     }
 }
