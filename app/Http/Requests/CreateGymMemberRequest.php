@@ -19,7 +19,7 @@ class CreateGymMemberRequest extends FormRequest
             'height_cm' => ['string'],
             'weight_kg' => ['string'],
             'photo_url' => ['string'],
-            'observatin' => ['string'],
+            'observation' => ['string'],
             'id_address' => ['required', 'string'],
             'id_enrollment' => ['required', 'string']
         ];

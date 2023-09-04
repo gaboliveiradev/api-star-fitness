@@ -20,7 +20,7 @@ class EmployeeModel extends Model
         'active'
     ];
 
-    public function id_person() {
+    public function person() {
         return $this->belongsTo(PersonModel::class, 'id_person');
     }
 

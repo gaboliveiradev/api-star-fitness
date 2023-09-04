@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmployeeModel;
 use App\Models\GymMemberModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,17 +21,20 @@ class AuthController extends Controller
 
         unset($credential['remember']);
 
-        if (!Auth::guard('employees')->attempt($credential, $remember)) {
+        if (!Auth::guard()->attempt($credential, $remember)) {
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user_employee = Auth::guard('employees')->user();
-        $token = $user_employee->createToken(env('APP_NAME'))->plainTextToken;
+        $person = Auth::guard()->user();
+        $token = $person->createToken(env('APP_NAME'))->plainTextToken;
 
-        unset($user_employee['id'], $user_employee['active'], $user_employee['created_at'], $user_employee['email_verified_at'], $user_employee['updated_at']);
+        unset($person['active'], $person['created_at'], $person['email_verified_at'], $person['updated_at']);
+
+        $employee = EmployeeModel::where('id_person', $person->id)->first();
+        $person['employee'] = $employee;
 
         return response()->json([
-            'employee' => $user_employee,
+            'user' => $person,
             'token' => $token
         ], 200);
     }
@@ -47,11 +51,11 @@ class AuthController extends Controller
 
         unset($credential['remember']);
 
-        if (!Auth::guard('gym-member')->attempt($credential, $remember)) {
+        if (!Auth::guard()->attempt($credential, $remember)) {
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user_gymMember = Auth::guard('gym-member')->user();
+        $user_gymMember = Auth::guard()->user();
         $token = $user_gymMember->createToken(env('APP_NAME'))->plainTextToken;
 
         unset($user_gymMember['id'], $user_gymMember['active'], $user_gymMember['created_at'], $user_gymMember['email_verified_at'], $user_gymMember['updated_at']);

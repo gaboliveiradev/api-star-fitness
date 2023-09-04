@@ -37,4 +37,16 @@ class PersonModel extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function address() {
+        return $this->belongsTo(AddressModel::class, 'id_address');
+    }
+
+    public function employee() {
+        return $this->hasMany(EmployeeModel::class, 'id_employee');
+    }
+
+    public function gym_member() {
+        return $this->hasMany(GymMemberModel::class, 'id_gym_member');
+    }
 }

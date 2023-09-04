@@ -13,8 +13,10 @@ class CreateEmployeeRequest extends FormRequest
             'email' => ['required', 'string'],
             'password' => ['required', 'string'],
             'document' => ['required', 'string', 'size:11'], 
-            'cref' => ['required', 'string'],
+            'phone' => ['required', 'string', 'size:11'],
             'birthday' => ['required', 'date_format:Y-m-d'],
+            'gender' => ['required', 'string', 'size:1'],
+            'cref' => ['required', 'string'],
             'observation' => ['string'],
             'id_address' => ['required', 'string'],
         ];
