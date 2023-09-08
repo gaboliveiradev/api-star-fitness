@@ -30,8 +30,9 @@ use App\Http\Controllers\AddressController;
 
     // Type
 
-    Route::post('/type', [TypeController::class, 'create']);
     Route::get('/type', [TypeController::class, 'getAll']);
+    Route::post('/type', [TypeController::class, 'create']);
+    Route::delete('/type/{id}', [TypeController::class, 'delete']);
 //});
 
 // Login
