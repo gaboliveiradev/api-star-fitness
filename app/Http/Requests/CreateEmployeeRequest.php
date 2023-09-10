@@ -17,6 +17,7 @@ class CreateEmployeeRequest extends FormRequest
             'birthday' => ['required', 'date_format:Y-m-d'],
             'gender' => ['required', 'string', 'size:1'],
             'cref' => ['required', 'string'],
+            'occupation' => ['required', 'string'],
             'observation' => ['string'],
             'id_address' => ['required', 'string'],
         ];

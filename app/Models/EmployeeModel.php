@@ -16,6 +16,7 @@ class EmployeeModel extends Model
     protected $fillable = [
         'id_person',
         'cref',
+        'occupation',
         'observation',
         'active'
     ];
