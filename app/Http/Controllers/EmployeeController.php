@@ -6,7 +6,6 @@ use App\Http\Requests\CreateEmployeeRequest;
 use App\Models\EmployeeModel;
 use App\Models\PersonModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +14,7 @@ class EmployeeController extends Controller
         $person = PersonModel::create([
             'name' => $request->all()['name'],
             'email' => $request->all()['email'],
-            'password' => Hash::make($request->all()['password']),
+            'password' => $request->all()['password'],
             'document' => $request->all()['document'],
             'phone' => $request->all()['phone'],
             'birthday' => $request->all()['birthday'],
