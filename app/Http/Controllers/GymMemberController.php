@@ -12,12 +12,10 @@ use Illuminate\Support\Facades\Hash;
 class GymMemberController extends Controller
 {
     private GymMemberModel $gymMemberModel;
-    private EnrollmentModel $enrollmentModel;
 
     public function __construct()
     {
         $this->gymMemberModel = new GymMemberModel();
-        $this->enrollmentModel = new EnrollmentModel();
     }
 
     public function create(Request $request) 

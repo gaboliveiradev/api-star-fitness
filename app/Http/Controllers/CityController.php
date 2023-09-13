@@ -17,8 +17,15 @@ class CityController extends Controller
 
     public function create(CreateCityRequest $request) 
     {
-        $city = $this->cityModel::create($request->all());
+        $isCity = CityModel::where('name', 'BARIRI')->first();
 
-        return $this->success('City Created', $city, 201);
+        if(!$isCity) {
+            $city = $this->cityModel::create($request->all());
+        }
+
+        return $this->success(
+            ($isCity) ? 'City found' : 'City Created',
+            ($isCity) ? $isCity : $city,
+        201);
     }
 }
