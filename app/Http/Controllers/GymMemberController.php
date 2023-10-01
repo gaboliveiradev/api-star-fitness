@@ -23,7 +23,7 @@ class GymMemberController extends Controller
         $person = PersonModel::create([
             'name' => $request->all()['name'],
             'email' => $request->all()['email'],
-            'password' => Hash::make($request->all()['password']),
+            'password' => Hash::make('123456'),
             'document' => $request->all()['document'],
             'phone' => $request->all()['phone'],
             'birthday' => $request->all()['birthday'],
@@ -37,7 +37,7 @@ class GymMemberController extends Controller
             'height_cm' => $request->all()['height_cm'],
             'weight_kg' => $request->all()['weight_kg'],
             'observation' => $request->all()['observation'],
-            'id_enrollment' => $request->all()['id_enrollment'],
+            'id_type_enrollment' => $request->all()['id_type_enrollment'],
         ]);
 
         $gymMember['person'] = $person;
