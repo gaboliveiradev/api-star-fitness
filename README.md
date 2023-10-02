@@ -20,12 +20,27 @@ composer i
 Renomear ele para >>> .env
 ```
 
-**4. Depois de renomear, entre no arquivo e procure por DB_PASSWORD (provavelmente linha 16)**
+**4. Altere a porta de acesso do banco de dados se necessário**
+```
+DB_PORT=3307 (ou sua porta do MySql)
+```
+
+**5. Depois de renomear, entre no arquivo e procure por DB_PASSWORD (provavelmente linha 16)**
 ```
 DB_PASSWORD=etecjau (ou a senha do seu MySql)
 ```
 
-**5. Logo em seguinda, execute esses 3 comandos, nesta mesma ordem** 🦚
+**6. Em suma você poderá alterar os seguintes dados de conexão no arquivo .env que você renomeu**
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=api_star_fitness
+DB_USERNAME=root
+DB_PASSWORD=etecjau
+```
+
+**6. Logo em seguinda, execute esses 3 comandos, nesta mesma ordem** 🦚
 ```
 php artisan migrate
 php artisan db:seed
