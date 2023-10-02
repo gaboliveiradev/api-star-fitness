@@ -15,7 +15,17 @@ git clone https://github.com/gaboliveiradev/api-star-fitness.git
 composer i
 ```
 
-**3. Logo em seguinda, execute esses 3 comandos, nesta mesma ordem 🦚
+**3. Procure pelo arquivo .env.example**
+```
+Renomear ele para >>> .env
+```
+
+**4. Depois de renomear, entre no arquivo e procure por DB_PASSWORD (provavelmente linha 16)**
+```
+DB_PASSWORD=etecjau (ou a senha do seu MySql)
+```
+
+**5. Logo em seguinda, execute esses 3 comandos, nesta mesma ordem** 🦚
 ```
 php artisan migrate
 php artisan db:seed
