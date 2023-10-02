@@ -30,7 +30,12 @@ DB_PORT=3307 (ou sua porta do MySql)
 DB_PASSWORD=etecjau (ou a senha do seu MySql)
 ```
 
-**6. Em suma você poderá alterar os seguintes dados de conexão no arquivo .env que você renomeu**
+**6. Ainda no arquivo .env adicione este código logo acima dos dados de conexão com o MySql**
+```
+SANCTUM_STATEFUL_DOMAINS=http://localhost:3000
+```
+
+**7. Em suma você poderá alterar os seguintes dados de conexão no arquivo .env que você renomeu**
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -40,10 +45,11 @@ DB_USERNAME=root
 DB_PASSWORD=etecjau
 ```
 
-**6. Logo em seguinda, execute esses 3 comandos, nesta mesma ordem** 🦚
+**8. Logo em seguinda, execute esses 3 comandos, nesta mesma ordem** 🦚
 ```
 php artisan migrate
 php artisan db:seed
+php artisan key:generate
 php artisan serve
 ```
 
