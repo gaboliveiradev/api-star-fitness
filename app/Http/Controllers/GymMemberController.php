@@ -44,4 +44,10 @@ class GymMemberController extends Controller
 
         return $this->success('Gym Member Created', $gymMember, 201);
     }
+
+    public function getAll() {
+        $gymMember = GymMemberModel::all();
+
+        return $this->success('Gym Members', $gymMember, 200);
+    }
 }

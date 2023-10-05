@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Gym Member
 
+    Route::get('/gym-member', [GymMemberController::class, 'getAll']);
     Route::post('/gym-member', [GymMemberController::class, 'create']);
 
     // Billing
