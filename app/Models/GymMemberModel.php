@@ -26,7 +26,7 @@ class GymMemberModel extends Model
         return $this->belongsTo(TypeModel::class, 'id_type_enrollment');
     }
 
-    public function id_person() {
+    public function person() {
         return $this->belongsTo(PersonModel::class, 'id_person');
     }
 

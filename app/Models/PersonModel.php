@@ -43,10 +43,10 @@ class PersonModel extends Authenticatable
     }
 
     public function employee() {
-        return $this->hasMany(EmployeeModel::class, 'id_employee');
+        return $this->hasMany(EmployeeModel::class, 'id_person');
     }
 
     public function gym_member() {
-        return $this->hasMany(GymMemberModel::class, 'id_gym_member');
+        return $this->hasMany(GymMemberModel::class, 'id_person');
     }
 }

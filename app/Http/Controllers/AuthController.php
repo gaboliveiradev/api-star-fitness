@@ -55,13 +55,16 @@ class AuthController extends Controller
             return $this->error('Usuário e/ou senha inválido(s)', 422);
         }
 
-        $user_gymMember = Auth::guard()->user();
-        $token = $user_gymMember->createToken(env('APP_NAME'))->plainTextToken;
+        $person = Auth::guard()->user();
+        $token = $person->createToken(env('APP_NAME'))->plainTextToken;
 
-        unset($user_gymMember['id'], $user_gymMember['active'], $user_gymMember['created_at'], $user_gymMember['email_verified_at'], $user_gymMember['updated_at']);
+        unset($person['active'], $person['created_at'], $person['email_verified_at'], $person['updated_at']);
+
+        $gymMember = GymMemberModel::where('id_person', $person->id)->first();
+        $person['gymMember'] = $gymMember;
 
         return response()->json([
-            'gym_member' => $user_gymMember,
+            'user' => $person,
             'token' => $token
         ]);
     }
