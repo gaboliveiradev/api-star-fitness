@@ -53,7 +53,7 @@ class GymMemberSeeder extends Seeder
         $gymMember = GymMemberModel::create([
             'id_person' => $person->id,
             'id_type_enrollment' => $type->id,
-            'height_cm' => 1.82,
+            'height_cm' => 182,
             'weight_kg' => 84.90,
         ]);
 

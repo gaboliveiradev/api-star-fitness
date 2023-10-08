@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->string('height_cm')->nullable(true);
             $table->string('weight_kg')->nullable(true);
             $table->string('observation')->nullable(true);
+            $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });
     }

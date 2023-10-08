@@ -28,7 +28,7 @@ class AuthController extends Controller
         $person = Auth::guard()->user();
         $token = $person->createToken(env('APP_NAME'))->plainTextToken;
 
-        unset($person['active'], $person['created_at'], $person['email_verified_at'], $person['updated_at']);
+        unset($person['created_at'], $person['email_verified_at'], $person['updated_at']);
 
         $employee = EmployeeModel::where('id_person', $person->id)->first();
         $person['employee'] = $employee;
@@ -58,7 +58,7 @@ class AuthController extends Controller
         $person = Auth::guard()->user();
         $token = $person->createToken(env('APP_NAME'))->plainTextToken;
 
-        unset($person['active'], $person['created_at'], $person['email_verified_at'], $person['updated_at']);
+        unset($person['created_at'], $person['email_verified_at'], $person['updated_at']);
 
         $gymMember = GymMemberModel::where('id_person', $person->id)->first();
         $person['gymMember'] = $gymMember;
