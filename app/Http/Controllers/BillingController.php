@@ -14,4 +14,11 @@ class BillingController extends Controller
 
         return $this->success('Billing Created', $billing, 201);
     }
+    
+    public function getAllByIdUser($id) 
+    {
+        $billings = BillingModel::find($id);
+        
+        return $this->success('Billings Find', $billings, 200);
+    }
 }
