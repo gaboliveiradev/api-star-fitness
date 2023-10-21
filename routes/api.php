@@ -33,6 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Billing
 
     Route::post('/billing', [BillingController::class, 'create']);
+    Route::get('/billing', [BillingController::class, 'getAllByIdUser']);
 
     // Type
 
