@@ -17,7 +17,7 @@ class BillingController extends Controller
     
     public function getAllByIdUser($id) 
     {
-        $billings = BillingModel::find($id);
+        $billings = BillingModel::where('id_gym_member', $id)->get();
         
         return $this->success('Billings Find', $billings, 200);
     }
