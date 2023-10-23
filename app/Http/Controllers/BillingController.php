@@ -17,7 +17,10 @@ class BillingController extends Controller
     
     public function getAllByIdUser($id) 
     {
-        $billings = BillingModel::where('id_gym_member', $id)->get();
+        $start = '2023-10-06';
+        $end = '2023-11-05';
+
+        $billings = BillingModel::where('id_gym_member', $id)->first();
         
         return $this->success('Billings Find', $billings, 200);
     }
