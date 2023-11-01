@@ -6,23 +6,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CreateMeasurementRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
     public function rules(): array
     {
         return [
-            //
+            "chest" => ['double'], 
+            "glute" => ['double'], 
+            "left_arm" => ['double'], 
+            "right_arm" => ['double'], 
+            "left_calf" => ['double'], 
+            "right_calf" => ['double'], 
+            "left_forearm" => ['double'], 
+            "right_forearm" => ['double'], 
+            "left_quadriceps" => ['double'], 
+            "right_quadriceps" => ['double'], 
+            "id_evolution" => ['required', 'string'], 
         ];
     }
 }
