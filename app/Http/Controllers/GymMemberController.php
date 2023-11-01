@@ -50,4 +50,22 @@ class GymMemberController extends Controller
 
         return $this->success('Gym Members', $gymMember, 200);
     }
+
+    public function delete($id) 
+    {
+        $gymMember = GymMemberModel::where('id', $id)->first();
+
+        if (!$gymMember) {
+            return $this->error('Gym Member Not Found', 404);
+        }
+
+        if (!$gymMember->active) {
+            return $this->error('This gym member is already deactivated.', 422);
+        }
+
+        $gymMember->active = false;
+        $gymMember->save();
+
+        return $this->success('Gym Member Deactivated Successfully', $gymMember, 200);
+    }
 }
