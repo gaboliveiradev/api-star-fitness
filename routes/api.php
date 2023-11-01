@@ -3,7 +3,9 @@
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\EvolutionController;
 use App\Http\Controllers\GymMemberController;
+use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +20,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/city/{id}', [CityController::class, 'update']);
 
     // Measurement
-    Route::post('/measurement', [CityController::class, 'create']);
+    Route::post('/measurement', [MeasurementController::class, 'create']);
+
+    // Evolution
+    Route::post('/evolution', [EvolutionController::class, 'create']);
 
     // Address
     Route::post('/address', [AddressController::class, 'create']);
