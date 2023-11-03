@@ -17,6 +17,7 @@ class BillingModel extends Model
         'invoice_date',
         'due_date',
         'payment_date',
+        'id_type_enrollment',
         'id_gym_member',
         'active'
     ];

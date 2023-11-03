@@ -11,6 +11,7 @@ class CreateBillingRequest extends FormRequest
         return [
             'invoice_date' => ['required'],
             'due_date' => ['required'],
+            'id_type_enrollment' => ['required', 'string'],
             'id_gym_member' => ['required', 'string'],
         ];
     }

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->string('district', 100)->nullable(false);
             $table->string('number', 20)->default(null);
             $table->string('zip_code', 8)->nullable(false);
-            $table->foreignUuid('id_city')->constrained('cities')->onDelete('cascade')->nullable(false);
+            $table->string('city', 100)->nullable(false);
+            $table->string('state', 2)->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });

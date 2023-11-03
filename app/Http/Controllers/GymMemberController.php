@@ -46,7 +46,7 @@ class GymMemberController extends Controller
     }
 
     public function getAll() {
-        $gymMember = GymMemberModel::with('person', 'person.address', 'person.address.city', 'type', 'billing')->get();
+        $gymMember = GymMemberModel::with('person', 'person.address', 'type', 'billing')->get();
 
         return $this->success('Gym Members', $gymMember, 200);
     }

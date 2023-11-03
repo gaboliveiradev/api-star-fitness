@@ -1,24 +1,17 @@
 <?php
 
-use App\Http\Controllers\BillingController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\EnrollmentController;
+use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\EvolutionController;
 use App\Http\Controllers\GymMemberController;
 use App\Http\Controllers\MeasurementController;
 use App\Http\Controllers\TypeController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BillingController;
+use App\Http\Controllers\EmployeeController;
 
 Route::middleware('auth:sanctum')->group(function () {
-    // City
-    Route::post('/city', [CityController::class, 'create']);
-    Route::put('/city/{id}', [CityController::class, 'update']);
-
     // Measurement
     Route::post('/measurement', [MeasurementController::class, 'create']);
 

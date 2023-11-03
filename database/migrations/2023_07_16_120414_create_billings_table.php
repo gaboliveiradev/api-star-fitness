@@ -13,6 +13,7 @@ return new class extends Migration
             $table->date('invoice_date')->nullable(false);
             $table->date('due_date')->nullable(false);
             $table->date('payment_date')->nullable(true)->default(null);
+            $table->foreignUuid('id_type_enrollment')->constrained('types')->onDelete('cascade')->nullable(false);
             $table->foreignUuid('id_gym_member')->constrained('gym_members')->onDelete('cascade')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();

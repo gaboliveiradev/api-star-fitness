@@ -15,21 +15,13 @@ class GymMemberSeeder extends Seeder
 {
     public function run(): void
     {
-        $isCity = CityModel::where('name', 'BARIRI')->first();
-
-        if (!$isCity) {
-            $city = CityModel::create([
-                'name' => 'BARIRI',
-                'state' => 'SP'
-            ]);
-        }
-
         $address = AddressModel::create([
             'street' => 'Rua Santa Cruz',
             'district' => 'Jardim Paulista',
             'number' => '149',
             'zip_code' => '17250396',
-            'id_city' => (!$isCity) ? $city->id : $isCity->id,
+            'city' => 'Bariri',
+            'state' => 'SP',
         ]);
 
         $person = PersonModel::create([
@@ -66,6 +58,7 @@ class GymMemberSeeder extends Seeder
         BillingModel::create([
             'invoice_date' => $dataAtual,
             'due_date' => $dataFutura,
+            'id_type_enrollment' => $type->id,
             'id_gym_member' => $gymMember->id,
         ]);
     }

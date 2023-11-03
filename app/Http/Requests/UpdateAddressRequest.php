@@ -13,7 +13,8 @@ class UpdateAddressRequest extends FormRequest
             'district' => ['string'],
             'number' => ['string'],
             'zip_code' => ['string', 'size:8'],
-            'id_city' => ['string'],
+            'city' => ['string'],
+            'state' => ['string'],
         ];
     }
 }

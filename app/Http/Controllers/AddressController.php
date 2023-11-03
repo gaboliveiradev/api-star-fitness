@@ -31,7 +31,7 @@ class AddressController extends Controller
             return $this->error('Address Not Found', 404);
         }
 
-        $address->fill($request->only(['street', 'district', 'number', 'zip_code']));
+        $address->fill($request->only(['street', 'district', 'number', 'zip_code', 'city', 'state']));
         $address->save();
 
         return $this->success('Address has updated', $address, 200);

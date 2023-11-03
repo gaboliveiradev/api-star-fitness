@@ -13,7 +13,8 @@ class CreateAddressRequest extends FormRequest
             'district' => ['required', 'string'],
             'number' => ['required', 'string'],
             'zip_code' => ['required', 'string', 'size:8'],
-            'id_city' => ['required', 'string'],
+            'city' => ['required', 'string'],
+            'state' => ['required', 'string'],
         ];
     }
 }

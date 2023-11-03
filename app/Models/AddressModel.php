@@ -18,14 +18,10 @@ class AddressModel extends Model
         'district',
         'number',
         'zip_code',
-        'id_city',
+        'city',
+        'state',
         'active'
     ];
-
-    public function city() {
-        // belongsTo: 'pertence a', ou seja o id_city pertence a tabela City
-        return $this->belongsTo(CityModel::class, 'id_city');
-    }
 
     public function employee() {
         return $this->hasMany(EmployeeModel::class, 'id_address');
