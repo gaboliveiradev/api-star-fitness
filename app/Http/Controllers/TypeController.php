@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
 use App\Models\TypeModel;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,20 @@ class TypeController extends Controller
         $type = TypeModel::create($request->all());
 
         return $this->success('Type Created', $type, 201);
+    }
+
+    public function update(UpdateTypeRequest $request, $id)
+    {
+        $type = TypeModel::find($id);
+
+        if (!$type) {
+            return $this->error('Type Not Found', 404);
+        }
+
+        $type->fill($request->only(['name', 'number_of_days', 'price']));
+        $type->save();
+
+        return $this->success('Type has updated', $type, 200);
     }
 
     public function delete($id) 
