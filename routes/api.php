@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
@@ -29,6 +30,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/gym-member', [GymMemberController::class, 'getAll']);
     Route::post('/gym-member', [GymMemberController::class, 'create']);
     Route::delete('/gym-member/{id}', [GymMemberController::class, 'delete']);
+
+    // Person
+    Route::put('/person', [PersonController::class, 'update']);
 
     // Billing
     Route::post('/billing', [BillingController::class, 'create']);
