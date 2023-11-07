@@ -29,10 +29,11 @@ Route::middleware('auth:sanctum')->group(function () {
     // Gym Member
     Route::get('/gym-member', [GymMemberController::class, 'getAll']);
     Route::post('/gym-member', [GymMemberController::class, 'create']);
+    Route::put('/gym-member/{id}', [GymMemberController::class, 'update']);
     Route::delete('/gym-member/{id}', [GymMemberController::class, 'delete']);
 
     // Person
-    Route::put('/person', [PersonController::class, 'update']);
+    Route::put('/person/{id}', [PersonController::class, 'update']);
 
     // Billing
     Route::post('/billing', [BillingController::class, 'create']);

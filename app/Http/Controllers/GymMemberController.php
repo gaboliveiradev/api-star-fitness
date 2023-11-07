@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateGymMemberRequest;
+use App\Http\Requests\UpdateGymMemberRequest;
 use App\Models\EnrollmentModel;
 use App\Models\GymMemberModel;
 use App\Models\PersonModel;
@@ -49,6 +50,20 @@ class GymMemberController extends Controller
         $gymMember = GymMemberModel::with('person', 'person.address', 'type', 'billing')->get();
 
         return $this->success('Gym Members', $gymMember, 200);
+    }
+
+    public function update(UpdateGymMemberRequest $request, $id) 
+    {
+        $gymMember = GymMemberModel::find($id);
+
+        if (!$gymMember) {
+            return $this->error('GymMember Not Found', 404);
+        }
+
+        $gymMember->fill($request->only(['height_cm', 'weight_kg', 'observation', 'id_type_enrollment']));
+        $gymMember->save();
+
+        return $this->success('Gym Member has updated', $gymMember, 200);
     }
 
     public function delete($id) 
