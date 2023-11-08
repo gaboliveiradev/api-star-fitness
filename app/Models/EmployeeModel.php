@@ -26,6 +26,6 @@ class EmployeeModel extends Model
     }
 
     public function access_group_employee_assoc() {
-        return $this->hasMany(AccessGroupEmployeeModel::class, 'id_employee');
+        return $this->hasMany(AccessGroupEmployeeAssocModel::class, 'id_employee');
     }
 }
