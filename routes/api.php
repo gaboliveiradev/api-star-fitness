@@ -17,6 +17,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/measurement', [MeasurementController::class, 'create']);
 
     // Evolution
+    Route::get('/evolution', [EvolutionController::class, 'getAll']);
     Route::post('/evolution', [EvolutionController::class, 'create']);
 
     // Address
