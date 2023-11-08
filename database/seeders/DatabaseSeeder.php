@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EmployeeSeeder::class,
             GymMemberSeeder::class,
+            PermissionSeeder::class,
+            AccessGroupSeeder::class,
+            AccessGroupPermissionAssocSeeder::class,
         ]);
     }
 }

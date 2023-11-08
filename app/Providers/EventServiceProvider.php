@@ -58,23 +58,18 @@ class EventServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        AccessGroupEmployeeAssocModel::observe(AccessGroupEmployeeAssocObserver::class);
         AccessGroupModel::observe(AccessGroupObserver::class);
-        AccessGroupPermissionAssocModel::observe(AccessGroupPermissionAssocObserver::class);
         AddressModel::observe(AddressObserver::class);
         BillingModel::observe(BillingObserver::class);
         DietModel::observe(DietObserver::class);
         EmployeeModel::observe(EmployeeObserver::class);
-        EvolutionExerciseAssocModel::observe(EvolutionExerciseAssocObserver::class);
         EvolutionModel::observe(EvolutionObserver::class);
         ExerciseModel::observe(ExerciseObserver::class);
         FoodModel::observe(FoodObserver::class);
         GymMemberModel::observe(GymMemberObserver::class);
-        MealFoodAssocModel::observe(MealFoodAssocObserver::class);
         MealModel::observe(MealObserver::class);
         MeasurementModel::observe(MeasurementObserver::class);
         PermissionModel::observe(PermissionObserver::class);
-        RoutineExerciseAssocModel::observe(RoutineExerciseAssocObserver::class);
         TypeModel::observe(TypeObserver::class);
         WorkoutRoutineModel::observe(WorkoutRoutineObserver::class);
         PersonModel::observe(PersonObserver::class);
