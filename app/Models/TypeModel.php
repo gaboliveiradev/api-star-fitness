@@ -20,6 +20,10 @@ class TypeModel extends Model
         'active'
     ];
 
+    public function billing() {
+        return $this->hasMany(BillingModel::class, 'id_type_enrollment');
+    }
+
     public function gym_member() {
         return $this->hasMany(GymMemberModel::class, 'id_type_enrollment');
     }

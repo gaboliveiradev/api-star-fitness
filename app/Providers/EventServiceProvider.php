@@ -17,11 +17,13 @@ use App\Models\GymMemberModel;
 use App\Models\MealFoodAssocModel;
 use App\Models\MealModel;
 use App\Models\MeasurementModel;
+use App\Models\PaymentModel;
 use App\Models\PermissionModel;
 use App\Models\PersonModel;
 use App\Models\RoutineExerciseAssocModel;
 use App\Models\TypeModel;
 use App\Models\WorkoutRoutineModel;
+use App\Observers\PaymentObserver;
 use App\Observers\PersonObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -73,6 +75,7 @@ class EventServiceProvider extends ServiceProvider
         TypeModel::observe(TypeObserver::class);
         WorkoutRoutineModel::observe(WorkoutRoutineObserver::class);
         PersonModel::observe(PersonObserver::class);
+        PaymentModel::observe(PaymentObserver::class);
     }
 
     /**

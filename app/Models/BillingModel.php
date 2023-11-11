@@ -22,7 +22,14 @@ class BillingModel extends Model
         'active'
     ];
 
+    public function type() {
+        return $this->belongsTo(GymMemberModel::class, 'id_type_enrollment');
+    }
     public function gym_member() {
         return $this->belongsTo(GymMemberModel::class, 'id_gym_member');
+    }
+
+    public function payment() {
+        return $this->hasMany(PaymentModel::class, 'id_billing');
     }
 }
