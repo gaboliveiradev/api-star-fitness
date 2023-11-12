@@ -16,6 +16,7 @@ class PaymentModel extends Model
     protected $fillable = [
         'id_billing',
         'payment_method',
+        'amount',
         'active'
     ];
 
