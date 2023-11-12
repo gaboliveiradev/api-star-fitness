@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Billing
     Route::post('/billing', [BillingController::class, 'create']);
     Route::get('/billing/{id}', [BillingController::class, 'getAllByIdUser']);
+
+    // Payment
+    Route::post('/payment', [PaymentController::class, 'create']);
 
     // Type
     Route::get('/type', [TypeController::class, 'getAll']);
