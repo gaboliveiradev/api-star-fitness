@@ -6,6 +6,7 @@ use App\Models\AddressModel;
 use App\Models\BillingModel;
 use App\Models\CityModel;
 use App\Models\GymMemberModel;
+use App\Models\PaymentModel;
 use App\Models\PersonModel;
 use App\Models\TypeModel;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -39,7 +40,7 @@ class GymMemberSeeder extends Seeder
         $type = TypeModel::create([
             'name' => 'Plano Básico',
             'number_of_days' => 6,
-            'price' => 89.9
+            'price' => 85
         ]);
 
         $gymMember = GymMemberModel::create([
@@ -55,11 +56,18 @@ class GymMemberSeeder extends Seeder
 
         $dataFutura = $data->format("Y-m-d");
 
-        BillingModel::create([
+        $billing = BillingModel::create([
             'invoice_date' => $dataAtual,
             'due_date' => $dataFutura,
+            'payment_date' => $dataAtual,
             'id_type_enrollment' => $type->id,
             'id_gym_member' => $gymMember->id,
+        ]);
+
+        PaymentModel::create([
+            'id_billing' => $billing->id,
+            'payment_method' => 'PIX',
+            'amount' => 85,
         ]);
     }
 }
