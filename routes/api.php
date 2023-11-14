@@ -16,6 +16,7 @@ use App\Http\Controllers\EmployeeController;
 
 Route::middleware('auth:sanctum')->group(function () {
     // Measurement
+    Route::get('/measurement/evolution/{id}', [MeasurementController::class, 'getAllByIdEvolution']);
     Route::post('/measurement', [MeasurementController::class, 'create']);
 
     // Evolution
