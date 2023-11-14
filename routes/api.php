@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
@@ -49,6 +50,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/type', [TypeController::class, 'create']);
     Route::put('/type/{id}', [TypeController::class, 'update']);
     Route::delete('/type/{id}', [TypeController::class, 'delete']);
+
+    // Exercise
+    Route::post('/exercise', [ExerciseController::class, 'create']);
 });
 
 // Login
