@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AddressModel;
 use App\Models\EmployeeModel;
 use App\Models\GymMemberModel;
 use Illuminate\Http\Request;
@@ -30,7 +31,10 @@ class AuthController extends Controller
 
         unset($person['created_at'], $person['email_verified_at'], $person['updated_at']);
 
+        $address = AddressModel::find($person->id_address);
+
         $employee = EmployeeModel::where('id_person', $person->id)->first();
+        $person['address'] = $address;
         $person['employee'] = $employee;
 
         return response()->json([
