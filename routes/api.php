@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\DietController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PersonController;
+use App\Http\Controllers\WorkoutRoutineController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
@@ -53,7 +55,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/type/{id}', [TypeController::class, 'delete']);
 
     // Exercise
+    Route::get('/exercise', [ExerciseController::class, 'getAll']);
     Route::post('/exercise', [ExerciseController::class, 'create']);
+
+    // Diet
+    Route::get('/diet', [DietController::class, 'getAll']);
+    Route::get('/diet/gym-member/{id}', [DietController::class, 'getAllByIdGymMember']);
+    Route::post('/diet', [DietController::class, 'create']);
+
+    // Workout Routine 
+    Route::get('/workout-routine', [WorkoutRoutineController::class, 'getAll']);
+    Route::get('/workout-routine/gym-member/{id}', [WorkoutRoutineController::class, 'getAllByIdGymMember']);
+    Route::post('/workout-routine', [WorkoutRoutineController::class, 'create']);
 });
 
 // Login

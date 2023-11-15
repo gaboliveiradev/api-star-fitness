@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\File;
 
 class ExerciseController extends Controller
 {
+    public function getAll() 
+    {
+        $exercises = ExerciseModel::all();
+
+        return $this->success('Exercises', $exercises, 200);
+    }
+
     public function create(CreateExerciseRequest $request) 
     {
         // Gif Execution
