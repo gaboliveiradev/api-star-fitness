@@ -57,6 +57,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Exercise
     Route::get('/exercise', [ExerciseController::class, 'getAll']);
     Route::post('/exercise', [ExerciseController::class, 'create']);
+    Route::delete('/exercise/{id}', [ExerciseController::class, 'delete']);
 
     // Diet
     Route::get('/diet', [DietController::class, 'getAll']);

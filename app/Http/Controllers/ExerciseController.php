@@ -43,4 +43,22 @@ class ExerciseController extends Controller
 
         return $this->success('Exercise Created', $exercise, 201);
     }
+
+    public function delete($id)
+    {
+        $exercise = ExerciseModel::where('id', $id)->first();
+
+        if(!$exercise) {
+            return $this->error('Exercise Not Found', 404);
+        }
+
+        if(!$exercise->active) {
+            return $this->error('This plan is already deactivated.', 422);
+        }
+
+        $exercise->active = false;
+        $exercise->save();
+
+        return $this->success('Exercise Deactivated Successfully', $exercise, 200);
+    }
 }
