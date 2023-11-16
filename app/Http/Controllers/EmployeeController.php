@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     public function getAll()
     {
-        $employee = EmployeeModel::all();
+        $employee = EmployeeModel::with('person', 'person.address')->get();
 
         return $this->success('Employees', $employee, 200);
     }
