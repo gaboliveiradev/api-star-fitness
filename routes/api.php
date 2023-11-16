@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/address/{id}', [AddressController::class, 'update']);
 
     // Employee
+    Route::get('/employee', [EmployeeController::class, 'getAll']);
     Route::post('/employee', [EmployeeController::class, 'create']);
 
     // Gym Member

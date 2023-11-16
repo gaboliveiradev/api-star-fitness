@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    public function getAll()
+    {
+        $employee = EmployeeModel::all();
+
+        return $this->success('Employees', $employee, 200);
+    }
+
     public function create(CreateEmployeeRequest $request)
     {   
         $person = PersonModel::create([
