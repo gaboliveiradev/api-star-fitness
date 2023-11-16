@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateExerciseRequest;
 
+use App\Http\Requests\UpdateExerciseRequest;
 use App\Models\ExerciseModel;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -11,14 +12,14 @@ use Illuminate\Support\Facades\File;
 
 class ExerciseController extends Controller
 {
-    public function getAll() 
+    public function getAll()
     {
         $exercises = ExerciseModel::all();
 
         return $this->success('Exercises', $exercises, 200);
     }
 
-    public function create(CreateExerciseRequest $request) 
+    public function create(CreateExerciseRequest $request)
     {
         // Gif Execution
         $gifExercise = $request->file('exercise_gif');
@@ -48,11 +49,11 @@ class ExerciseController extends Controller
     {
         $exercise = ExerciseModel::where('id', $id)->first();
 
-        if(!$exercise) {
+        if (!$exercise) {
             return $this->error('Exercise Not Found', 404);
         }
 
-        if(!$exercise->active) {
+        if (!$exercise->active) {
             return $this->error('This plan is already deactivated.', 422);
         }
 
@@ -60,5 +61,14 @@ class ExerciseController extends Controller
         $exercise->save();
 
         return $this->success('Exercise Deactivated Successfully', $exercise, 200);
+    }
+
+    public function update(UpdateExerciseRequest $request, $id)
+    {
+        $exercise = ExerciseModel::find($id);
+
+        if (!$exercise) {
+            return $this->error('Exercise Not Found', 404);
+        }
     }
 }
