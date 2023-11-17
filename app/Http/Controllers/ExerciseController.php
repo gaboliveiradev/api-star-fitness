@@ -19,6 +19,13 @@ class ExerciseController extends Controller
         return $this->success('Exercises', $exercises, 200);
     }
 
+    public function getById($id)
+    {
+        $exercise = ExerciseModel::find($id)->first();
+
+        return $this->success('Exercise Found', $exercise, 200);
+    }
+
     public function create(CreateExerciseRequest $request)
     {
         // Gif Execution
