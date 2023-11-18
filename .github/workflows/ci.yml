@@ -9,13 +9,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout do repositorio
-              uses: actions/checkout@1
+              uses: actions/checkout@v1
             - name: Deploy para meu hosting
               uses: easingthemes/ssh-deploy@main
               env:
                 SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
                 ARGS: "-rltgoDzvO --delte"
-                SOURCE: ""
+                SOURCE: "public/"
                 REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
                 REMOTE_USER: ${{ secrets.REMOTE_USER }}
                 REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
