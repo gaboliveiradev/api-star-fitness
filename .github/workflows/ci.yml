@@ -8,9 +8,9 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout do repositorio
+            - name: Checkout Repositório
               uses: actions/checkout@v1
-            - name: Deploy para meu hosting
+            - name: Deploy Hostinger
               uses: easingthemes/ssh-deploy@main
               env:
                 SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
