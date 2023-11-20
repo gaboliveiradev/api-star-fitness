@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccessGroupEmployeeAssocModel;
+use App\Models\AccessGroupModel;
 use App\Models\AddressModel;
 use App\Models\EmployeeModel;
 use App\Models\GymMemberModel;
@@ -11,7 +13,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function loginAsEmployee(Request $request) {
+    public function loginAsEmployee(Request $request)
+    {
         $credential = $request->validate([
             'email' => ['required', 'string'],
             'password' => ['required'],
@@ -27,8 +30,6 @@ class AuthController extends Controller
         }
 
         $person = Auth::guard()->user();
-        $token = $person->createToken(env('APP_NAME'))->plainTextToken;
-
         unset($person['created_at'], $person['email_verified_at'], $person['updated_at']);
 
         $address = AddressModel::find($person->id_address);
@@ -36,6 +37,20 @@ class AuthController extends Controller
         $employee = EmployeeModel::where('id_person', $person->id)->first();
         $person['address'] = $address;
         $person['employee'] = $employee;
+
+        $idAccessGroup = AccessGroupEmployeeAssocModel::where('id_employee', $person['employee']->id)->first();
+        $access_group = AccessGroupModel::find($idAccessGroup->id_access_group);
+
+        $person['accessGroup'] = $access_group;
+
+        // Substituir apóstrofos por aspas duplas para obter um JSON válido
+        $jsonString = str_replace("'", "\"", $access_group->abilities);
+
+        // Decodificar a string JSON para obter um array associativo
+        $array = json_decode($jsonString, true);
+
+        $token = $person->createToken(env('APP_NAME'), $array)->plainTextToken;
+
 
         return response()->json([
             'user' => $person,
