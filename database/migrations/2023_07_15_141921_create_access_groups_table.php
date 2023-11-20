@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('access_groups', function (Blueprint $table) {
             $table->uuid('id')->unique()->primary();
             $table->string('name', 80)->nullable(false);
+            $table->text('abilities')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });

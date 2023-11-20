@@ -13,12 +13,41 @@ class AccessGroupSeeder extends Seeder
      */
     public function run(): void
     {
-        $accessGroup = ['Proprietário(a)', 'Professor'];
+        /*$accessGroup = ['Proprietário(a)', 'Professor'];
+        $permissions = [
+            'App:*',
+            'GymMember:insert',
+            'GymMember:update',
+            'GymMember:delete',
+            'GymMember:select',
+            'Employee:insert',
+            'Employee:update',
+            'Employee:delete',
+            'Employee:select',
+            'Plan:insert',
+            'Plan:update',
+            'Plan:delete',
+            'Plan:select',
+            'Exercise:insert',
+            'Exercise:update',
+            'Exercise:delete',
+            'Exercise:select',
+            'WorkoutRoutine:insert',
+            'WorkoutRoutine:update',
+            'WorkoutRoutine:delete',
+            'WorkoutRoutine:select',
+        ];*/
 
-        foreach($accessGroup as $group) {
-            AccessGroupModel::create([
-                'name' => $group
-            ]);
-        }
+
+        AccessGroupModel::create([
+            'name' => 'Proprietário(a)',
+            'abilities' => "['App:*']"
+        ]);
+
+        AccessGroupModel::create([
+            'name' => 'Professor',
+            'abilities' => "['WorkoutRoutine:insert','WorkoutRoutine:update','WorkoutRoutine:delete','WorkoutRoutine:select','GymMember:select','Plan:select','Exercise:select']"
+        ]);
+
     }
 }

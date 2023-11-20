@@ -15,14 +15,11 @@ class AccessGroupModel extends Model
 
     protected $fillable = [
         'name',
+        'abilities',
         'active'
     ];
 
-    public function access_group_permission_assoc() {
-        return $this->hasMany(AccessGroupPermissionAssocModel::class, 'id_access_group');
-    }
-
     public function access_group_employee_assoc() {
-        return $this->hasMany(AccessGroupEmployeeModel::class, 'id_access_group');
+        return $this->hasMany(AccessGroupEmployeeAssocModel::class, 'id_access_group');
     }
 }
