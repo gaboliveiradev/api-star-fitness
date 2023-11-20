@@ -16,6 +16,7 @@ class WorkoutRoutineModel extends Model
     protected $fillable = [
         'name',
         'id_gym_member',
+        'default',
         'active'
     ];
 

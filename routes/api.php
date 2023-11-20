@@ -71,6 +71,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/workout-routine', [WorkoutRoutineController::class, 'getAll']);
     Route::get('/workout-routine/gym-member/{id}', [WorkoutRoutineController::class, 'getAllByIdGymMember']);
     Route::post('/workout-routine', [WorkoutRoutineController::class, 'create']);
+    Route::post('/workout-routine/exercise/assoc', [WorkoutRoutineController::class, 'createWorkoutRoutineExerciseAssoc']);
 });
 
 // Login

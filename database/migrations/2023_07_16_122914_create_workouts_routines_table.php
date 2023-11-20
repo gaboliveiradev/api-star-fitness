@@ -12,6 +12,7 @@ return new class extends Migration
             $table->uuid('id')->unique()->primary();
             $table->string('name')->nullable(false);
             $table->foreignUuid('id_gym_member')->constrained('gym_members')->onDelete('cascade')->nullable(false);
+            $table->boolean('default')->nullable(false)->default(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });

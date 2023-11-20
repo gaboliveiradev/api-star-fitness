@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateWorkoutRoutineExerciseAsssocRequest;
 use App\Http\Requests\CreateWorkoutRoutineRequest;
+use App\Models\RoutineExerciseAssocModel;
 use App\Models\WorkoutRoutineModel;
 use Illuminate\Http\Request;
 
@@ -27,5 +29,24 @@ class WorkoutRoutineController extends Controller
         $workoutRoutine = WorkoutRoutineModel::create($request->all());
 
         return $this->success('Workout Routine Created', $workoutRoutine, 201);
+    }
+
+    public function createWorkoutRoutineExerciseAssoc(CreateWorkoutRoutineExerciseAsssocRequest $request)
+    {
+        foreach($request->all()['array_exercises'] as $item) {
+            RoutineExerciseAssocModel::create([
+                'id_workout_routine' => $request->all()['id_workout_routine'],
+                'id_exercise' => $item['idExercise'],
+                'week_day' => $item['weekDay'],
+                'sets' => $item['sets'],
+                'repetitions' => $item['repetitions'],
+                'rest_seconds' => $item['rest'],
+                'observation' => $item['observation'],
+            ]);
+        }
+
+        $workout = RoutineExerciseAssocModel::where('id_workout_routine', $request->all()['id_workout_routine'])->get();
+
+        return $this->success("Workout Routine Exercise Assoc Created", $workout, 201);
     }
 }

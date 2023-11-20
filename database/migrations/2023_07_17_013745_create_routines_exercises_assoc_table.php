@@ -14,9 +14,9 @@ return new class extends Migration
             $table->string('week_day')->nullable(false);
             $table->integer('sets')->nullable(false); 
             $table->integer('repetitions')->nullable(false);
-            $table->integer('rest_seconds')->nullable(false);
-            $table->string('observation')->default(null);
-            $table->boolean('active')->nullable()->default(true);
+            $table->time('rest_seconds')->nullable(false);
+            $table->string('observation')->nullable(true)->default(null);
+            $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });
     }
