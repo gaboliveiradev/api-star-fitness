@@ -16,13 +16,13 @@ class AccessGroupPermissionAssocSeeder extends Seeder
     public function run(): void
     {
         $proprietario = AccessGroupModel::where("name", "Proprietário(a)")->first();
-        $perm_proprietario = PermissionModel::where("name", "perm_*")->first();
+        $perm_proprietario = PermissionModel::where("name", "App:*")->first();
 
-        $personal = AccessGroupModel::where("name", "Personal")->first();
-        $perm1_personal = PermissionModel::where("name", "perm_insert_workout_routines")->first();
-        $perm2_personal = PermissionModel::where("name", "perm_update_workout_routines")->first();
-        $perm3_personal = PermissionModel::where("name", "perm_delete_workout_routines")->first();
-        $perm4_personal = PermissionModel::where("name", "perm_select_workout_routines")->first();
+        $personal = AccessGroupModel::where("name", "Professor")->first();
+        $perm1_personal = PermissionModel::where("name", "WorkoutRoutine:insert")->first();
+        $perm2_personal = PermissionModel::where("name", "WorkoutRoutine:update")->first();
+        $perm3_personal = PermissionModel::where("name", "WorkoutRoutine:delete")->first();
+        $perm4_personal = PermissionModel::where("name", "WorkoutRoutine:select")->first();
     
         // Proprietário
         AccessGroupPermissionAssocModel::create([

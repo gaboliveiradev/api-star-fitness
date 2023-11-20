@@ -42,34 +42,5 @@ class EmployeeSeeder extends Seeder
             'cref' => '163161-G/SP',
             'occupation' => 'PROPRIETÁRIO',
         ]);
-
-        // Novo Funcionário
-
-        $address = AddressModel::create([
-            'street' => 'Rua Santa Cruz',
-            'district' => 'Jardim Paulista',
-            'number' => '165',
-            'zip_code' => '17250396',
-            'city' => 'Bariri',
-            'state' => 'SP',
-        ]);
-
-        $person = PersonModel::create([
-            'name' => 'Rafael Sanches',
-            'email' => 'rafael.sanches@gmail.com',
-            'password' => '123456',
-            'document' => '88383499834',
-            'phone' => '14983949009',
-            'birthday' => '1999-01-11',
-            'gender' => 'M',
-            'photo_url' => 'https://www.promoview.com.br/uploads/images/unnamed%2819%29.png',
-            'id_address' => $address->id,
-        ]);
-
-        EmployeeModel::create([
-            'id_person' => $person->id,
-            'cref' => '176345-G/SP',
-            'occupation' => 'PERSONAL',
-        ]);
     }
 }

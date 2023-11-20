@@ -13,7 +13,7 @@ class AccessGroupSeeder extends Seeder
      */
     public function run(): void
     {
-        $accessGroup = ['Proprietário(a)', 'Personal'];
+        $accessGroup = ['Proprietário(a)', 'Professor'];
 
         foreach($accessGroup as $group) {
             AccessGroupModel::create([

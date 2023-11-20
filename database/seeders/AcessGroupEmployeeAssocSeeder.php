@@ -24,14 +24,5 @@ class AcessGroupEmployeeAssocSeeder extends Seeder
             'id_access_group' => $proprietario->id,
             'id_employee' => $employee->id,
         ]);
-
-        $personal = AccessGroupModel::where("name", "Personal")->first();
-        $person = PersonModel::where("name", "Rafael Sanches")->first();
-        $employee = EmployeeModel::where("id_person", $person->id)->first();
-
-        AccessGroupEmployeeAssocModel::create([
-            'id_access_group' => $personal->id,
-            'id_employee' => $employee->id,
-        ]);
     }
 }
