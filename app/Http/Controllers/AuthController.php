@@ -75,7 +75,7 @@ class AuthController extends Controller
         }
 
         $person = Auth::guard()->user();
-        $token = $person->createToken(env('APP_NAME'))->plainTextToken;
+        $token = $person->createToken(env('APP_NAME'), ['Mobile:*'])->plainTextToken;
 
         unset($person['created_at'], $person['email_verified_at'], $person['updated_at']);
 

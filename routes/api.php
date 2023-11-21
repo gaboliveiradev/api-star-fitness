@@ -18,12 +18,12 @@ use App\Http\Controllers\EmployeeController;
 
 Route::middleware('auth:sanctum')->group(function () {
     // Measurement
-    Route::get('/measurement/evolution/{id}', [MeasurementController::class, 'getAllByIdEvolution']);
-    Route::post('/measurement', [MeasurementController::class, 'create']);
+    Route::get('/measurement/evolution/{id}', [MeasurementController::class, 'getAllByIdEvolution'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
+    Route::post('/measurement', [MeasurementController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
 
     // Evolution
     Route::get('/evolution', [EvolutionController::class, 'getAll']);
-    Route::post('/evolution', [EvolutionController::class, 'create']);
+    Route::post('/evolution', [EvolutionController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
 
     // Address
     Route::post('/address', [AddressController::class, 'create']);
@@ -50,28 +50,28 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/payment', [PaymentController::class, 'create']);
 
     // Type
-    Route::get('/type', [TypeController::class, 'getAll']);
-    Route::post('/type', [TypeController::class, 'create']);//->middleware(['auth:sanctum', 'abilities:server:update']);
-    Route::put('/type/{id}', [TypeController::class, 'update']);
-    Route::delete('/type/{id}', [TypeController::class, 'delete']);
+    Route::get('/type', [TypeController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Plan:select']);
+    Route::post('/type', [TypeController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Plan:insert']);
+    Route::put('/type/{id}', [TypeController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*,Plan:update']);
+    Route::delete('/type/{id}', [TypeController::class, 'delete'])->middleware(['auth:sanctum', 'ability:App:*,Plan:delete']);
 
     // Exercise
-    Route::get('/exercise', [ExerciseController::class, 'getAll']);
-    Route::get('/exercise/{id}', [ExerciseController::class, 'getById']);
-    Route::post('/exercise', [ExerciseController::class, 'create']);
-    Route::delete('/exercise/{id}', [ExerciseController::class, 'delete']);
-    Route::put('/exercise/{id}', [ExerciseController::class, 'update']);
+    Route::get('/exercise', [ExerciseController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,Exercise:select']);
+    Route::get('/exercise/{id}', [ExerciseController::class, 'getById'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
+    Route::post('/exercise', [ExerciseController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Exercise:insert']);
+    Route::delete('/exercise/{id}', [ExerciseController::class, 'delete'])->middleware(['auth:sanctum', 'ability:App:*,Exercise:delete']);
+    Route::put('/exercise/{id}', [ExerciseController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*,Exercise:update']);
 
     // Diet
     Route::get('/diet', [DietController::class, 'getAll']);
-    Route::get('/diet/gym-member/{id}', [DietController::class, 'getAllByIdGymMember']);
-    Route::post('/diet', [DietController::class, 'create']);
+    Route::get('/diet/gym-member/{id}', [DietController::class, 'getAllByIdGymMember'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
+    Route::post('/diet', [DietController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
 
     // Workout Routine 
-    Route::get('/workout-routine', [WorkoutRoutineController::class, 'getAll']);
-    Route::get('/workout-routine/gym-member/{id}', [WorkoutRoutineController::class, 'getAllByIdGymMember']);
-    Route::post('/workout-routine', [WorkoutRoutineController::class, 'create']);
-    Route::post('/workout-routine/exercise/assoc', [WorkoutRoutineController::class, 'createWorkoutRoutineExerciseAssoc']);
+    Route::get('/workout-routine', [WorkoutRoutineController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,WorkoutRoutine:select']);
+    Route::get('/workout-routine/gym-member/{id}', [WorkoutRoutineController::class, 'getAllByIdGymMember'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:select']);
+    Route::post('/workout-routine', [WorkoutRoutineController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
+    Route::post('/workout-routine/exercise/assoc', [WorkoutRoutineController::class, 'createWorkoutRoutineExerciseAssoc'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
 });
 
 // Login

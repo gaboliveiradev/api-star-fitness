@@ -16,6 +16,7 @@ class AccessGroupSeeder extends Seeder
         /*$accessGroup = ['Proprietário(a)', 'Professor'];
         $permissions = [
             'App:*',
+            'Mobile:*',
             'GymMember:insert',
             'GymMember:update',
             'GymMember:delete',
