@@ -20,7 +20,7 @@ class WorkoutRoutineController extends Controller
 
     public function getAllWorkoutRoutineByIdAndWeekDay(Request $request) 
     {
-        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $request->all()['id_workout_routine'])::where('week_day', $request->all()['week_day'])->get();
+        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $request->all()['id_workout_routine'])->where('week_day', $request->all()['week_day'])->get();
 
         return $this->success('Workout Routine Exercise Assoc By Id And Week Day', $workoutRoutine, 200);
     }
@@ -41,7 +41,15 @@ class WorkoutRoutineController extends Controller
 
     public function createInMobile(CreateWorkoutRoutineExerciseAssocMobileRequest $request)
     {
-        $workout = RoutineExerciseAssocModel::create([$request->all()]);
+        $workout = RoutineExerciseAssocModel::create([
+            'id_workout_routine' => $request->all()['id_workout_routine'],
+            'id_exercise' => $request['id_exercise'],
+            'week_day' => $request['week_day'],
+            'sets' => $request['sets'],
+            'repetitions' => $request['repetitions'],
+            'rest_seconds' => $request['rest_seconds'],
+            'observation' => $request['observation'],
+        ]);
 
         return $this->success("Workout Routine Exercise Assoc Created", $workout, 201);
     }

@@ -14,7 +14,7 @@ class CreateWorkoutRoutineExerciseAssocMobileRequest extends FormRequest
             'week_day' => ['required', 'string'],
             'sets' => ['required', 'integer'],
             'repetitions' => ['required', 'integer'],
-            'rest_seconds' => ['required', 'time'],
+            'rest_seconds' => ['required'],
             'observation' => [],
         ];
     }
