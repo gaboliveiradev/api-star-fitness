@@ -40,6 +40,10 @@ class AccessGroupSeeder extends Seeder
             'AccessGroup:update',
             'AccessGroup:delete',
             'AccessGroup:select',
+            'Address:insert',
+            'Address:update',
+            'Address:delete',
+            'Address:select',
         ];*/
 
 

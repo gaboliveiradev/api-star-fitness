@@ -32,12 +32,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/evolution', [EvolutionController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
 
     // Address
-    Route::post('/address', [AddressController::class, 'create']);
-    Route::put('/address/{id}', [AddressController::class, 'update']);
+    Route::post('/address', [AddressController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Address:insert']);
+    Route::put('/address/{id}', [AddressController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*,Address:update']);
 
     // Employee
-    Route::get('/employee', [EmployeeController::class, 'getAll']);
-    Route::post('/employee', [EmployeeController::class, 'create']);
+    Route::get('/employee', [EmployeeController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Employee:select']);
+    Route::post('/employee', [EmployeeController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Employee:insert']);
 
     // Gym Member
     Route::get('/gym-member', [GymMemberController::class, 'getAll']);
