@@ -18,9 +18,9 @@ class WorkoutRoutineController extends Controller
         return $this->success('Workout Routines', $workoutRoutine, 200);
     }
 
-    public function getAllWorkoutRoutineByIdAndWeekDay(Request $request) 
+    public function getAllWorkoutRoutineByIdAndWeekDay($weekday, $id) 
     {
-        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $request->all()['id_workout_routine'])->where('week_day', $request->all()['week_day'])->get();
+        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $id)->where('week_day', $weekday)->get();
 
         return $this->success('Workout Routine Exercise Assoc By Id And Week Day', $workoutRoutine, 200);
     }

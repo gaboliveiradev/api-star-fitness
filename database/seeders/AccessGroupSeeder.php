@@ -36,7 +36,10 @@ class AccessGroupSeeder extends Seeder
             'WorkoutRoutine:insert',
             'WorkoutRoutine:update',
             'WorkoutRoutine:delete',
-            'WorkoutRoutine:select',
+            'AccessGroup:insert',
+            'AccessGroup:update',
+            'AccessGroup:delete',
+            'AccessGroup:select',
         ];*/
 
 

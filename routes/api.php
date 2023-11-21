@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccessGroupController;
 use App\Http\Controllers\DietController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\PaymentController;
@@ -17,6 +18,9 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\EmployeeController;
 
 Route::middleware('auth:sanctum')->group(function () {
+    // Access Group
+    Route::get('/access-group', [AccessGroupController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,AccessGroup:select']);
+
     // Measurement
     Route::get('/measurement/evolution/{id}', [MeasurementController::class, 'getAllByIdEvolution'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
     Route::post('/measurement', [MeasurementController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
@@ -71,7 +75,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/workout-routine', [WorkoutRoutineController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,WorkoutRoutine:select']);
     Route::get('/workout-routine/gym-member/{id}', [WorkoutRoutineController::class, 'getAllByIdGymMember'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:select']);
     Route::post('/workout-routine', [WorkoutRoutineController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
-    Route::post('/workout-routine/mobile/id-workout/weekday', [WorkoutRoutineController::class, 'getAllWorkoutRoutineByIdAndWeekDay'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
+    Route::get('/workout-routine/mobile/{weekday}/{id}', [WorkoutRoutineController::class, 'getAllWorkoutRoutineByIdAndWeekDay'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
     Route::post('/workout-routine/mobile', [WorkoutRoutineController::class, 'createInMobile'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
     Route::post('/workout-routine/exercise/assoc', [WorkoutRoutineController::class, 'createWorkoutRoutineExerciseAssoc'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*,WorkoutRoutine:insert']);
 });
