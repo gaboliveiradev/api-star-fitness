@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateWorkoutRoutineExerciseAssocMobileRequest;
 use App\Http\Requests\CreateWorkoutRoutineExerciseAsssocRequest;
 use App\Http\Requests\CreateWorkoutRoutineRequest;
 use App\Models\RoutineExerciseAssocModel;
@@ -17,6 +18,13 @@ class WorkoutRoutineController extends Controller
         return $this->success('Workout Routines', $workoutRoutine, 200);
     }
 
+    public function getAllWorkoutRoutineByIdAndWeekDay(Request $request) 
+    {
+        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $request->all()['id_workout_routine'])::where('week_day', $request->all()['week_day'])->get();
+
+        return $this->success('Workout Routine Exercise Assoc By Id And Week Day', $workoutRoutine, 200);
+    }
+
     public function getAllByIdGymMember($id)
     {
         $workoutRoutine = WorkoutRoutineModel::where('id_gym_member', $id)->get();
@@ -29,6 +37,13 @@ class WorkoutRoutineController extends Controller
         $workoutRoutine = WorkoutRoutineModel::create($request->all());
 
         return $this->success('Workout Routine Created', $workoutRoutine, 201);
+    }
+
+    public function createInMobile(CreateWorkoutRoutineExerciseAssocMobileRequest $request)
+    {
+        $workout = RoutineExerciseAssocModel::create([$request->all()]);
+
+        return $this->success("Workout Routine Exercise Assoc Created", $workout, 201);
     }
 
     public function createWorkoutRoutineExerciseAssoc(CreateWorkoutRoutineExerciseAsssocRequest $request)
