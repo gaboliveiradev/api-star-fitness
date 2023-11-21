@@ -40,7 +40,6 @@ class EmployeeSeeder extends Seeder
         EmployeeModel::create([
             'id_person' => $person->id,
             'cref' => '163161-G/SP',
-            'occupation' => 'PROPRIETÁRIO',
         ]);
     }
 }
