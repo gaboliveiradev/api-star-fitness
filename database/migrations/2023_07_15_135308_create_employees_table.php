@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->uuid('id')->unique()->primary();
             $table->foreignUuid('id_person')->constrained('persons')->onDelete('cascade')->nullable(false);
-            $table->string('cref', 15)->nullable(false);
+            $table->string('cref')->nullable(false);
             $table->string('observation', 1000)->nullable(true);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
