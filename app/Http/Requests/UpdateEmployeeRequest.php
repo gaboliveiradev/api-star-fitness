@@ -11,7 +11,7 @@ class UpdateEmployeeRequest extends FormRequest
     {
         return [
             'cref' => ['string'],
-            'observation' => ['string'],
+            'observation' => [],
         ];
     }
 }
