@@ -38,6 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Employee
     Route::get('/employee', [EmployeeController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Employee:select']);
     Route::post('/employee', [EmployeeController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Employee:insert']);
+    Route::put('/employee/{id}', [EmployeeController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*,Employee:update']);
     Route::delete('/employee/{id}', [EmployeeController::class, 'delete'])->middleware(['auth:sanctum', 'ability:App:*,Employee:delete']);
 
     // Gym Member

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEmployeeRequest;
+use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\EmployeeModel;
 use App\Models\PersonModel;
 use Illuminate\Http\Request;
@@ -41,6 +42,20 @@ class EmployeeController extends Controller
 
 
         return $this->success('Employee Created', $employee, 201);
+    }
+
+    public function update(UpdateEmployeeRequest $request, $id) 
+    {
+        $employee = EmployeeModel::find($id);
+
+        if (!$employee) {
+            return $this->error('Funcionário Inexistente.', 404);
+        }
+
+        $employee->fill($request->only(['cref', 'observation']));
+        $employee->save();
+
+        return $this->success('Funcionário Atualizado.', $employee, 200);
     }
 
     public function delete($id) 
