@@ -42,4 +42,22 @@ class EmployeeController extends Controller
 
         return $this->success('Employee Created', $employee, 201);
     }
+
+    public function delete($id) 
+    {
+        $employee = EmployeeModel::where('id', $id)->first();
+
+        if (!$employee) {
+            return $this->error('Employee Not Found', 404);
+        }
+
+        if (!$employee->active) {
+            return $this->error('This employee is already deactivated.', 422);
+        }
+
+        $employee->active = false;
+        $employee->save();
+
+        return $this->success('Employee Deactivated Successfully', $employee, 200);
+    }
 }
