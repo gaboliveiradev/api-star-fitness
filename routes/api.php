@@ -54,6 +54,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Billing
     Route::post('/billing', [BillingController::class, 'create']);
     Route::get('/billing/{id}', [BillingController::class, 'getAllByIdUser']);
+    Route::put('/billing/{id}', [BillingController::class, 'update']);
 
     // Payment
     Route::post('/payment', [PaymentController::class, 'create']);

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreatePaymentRequest;
+use App\Http\Requests\UpdateBillingRequest;
+use App\Http\Requests\UpdatePaymentRequest;
 use App\Models\PaymentModel;
 use Illuminate\Http\Request;
 
