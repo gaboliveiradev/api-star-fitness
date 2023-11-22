@@ -59,6 +59,8 @@ Route::middleware('auth:sanctum')->group(function () {
     // Payment
     Route::post('/payment', [PaymentController::class, 'create']);
 
+    // servidor
+
     // Type
     Route::get('/type', [TypeController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Plan:select']);
     Route::post('/type', [TypeController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Plan:insert']);
