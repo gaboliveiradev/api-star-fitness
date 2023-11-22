@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateWorkoutRoutineExerciseAssocMobileRequest;
 use App\Http\Requests\CreateWorkoutRoutineExerciseAsssocRequest;
 use App\Http\Requests\CreateWorkoutRoutineRequest;
+use App\Models\ExerciseModel;
 use App\Models\RoutineExerciseAssocModel;
 use App\Models\WorkoutRoutineModel;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class WorkoutRoutineController extends Controller
 
     public function getAllWorkoutRoutineByIdAndWeekDay($weekday, $id) 
     {
-        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $id)->where('week_day', $weekday)->get();
+        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $id)->where('week_day', $weekday)::with('exercise')->get();
 
         return $this->success('Workout Routine Exercise Assoc By Id And Week Day', $workoutRoutine, 200);
     }
