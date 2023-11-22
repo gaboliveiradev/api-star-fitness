@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Access Group
     Route::get('/access-group', [AccessGroupController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,AccessGroup:select']);
     Route::post('/access-group/employee', [AccessGroupEmployeeAssocController::class, 'createAccessGroupEmployeeAssoc'])->middleware(['auth:sanctum', 'ability:App:*,AccessGroup:insert']);
+    Route::post('/access-group/employee/update', [AccessGroupEmployeeAssocController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*']);
 
     // Measurement
     Route::get('/measurement/evolution/{id}', [MeasurementController::class, 'getAllByIdEvolution'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
