@@ -19,9 +19,13 @@ class WorkoutRoutineController extends Controller
         return $this->success('Workout Routines', $workoutRoutine, 200);
     }
 
-    public function getAllWorkoutRoutineByIdAndWeekDay($weekday, $id) 
+    public function getAllWorkoutRoutineByIdAndWeekDay($weekday, $id)
     {
-        $workoutRoutine = RoutineExerciseAssocModel::where('id_workout_routine', $id)->where('week_day', $weekday)::with('exercise')->get();
+        $workoutRoutine = RoutineExerciseAssocModel::join('exercises', 'routines_exercises_assoc.id_exercise', '=', 'exercises.id')
+            ->select('routines_exercises_assoc.*', 'exercises.name as exercise_name')
+            ->where('routines_exercises_assoc.id_workout_routine', $id)
+            ->where('routines_exercises_assoc.week_day', $weekday)
+            ->get();
 
         return $this->success('Workout Routine Exercise Assoc By Id And Week Day', $workoutRoutine, 200);
     }
@@ -57,7 +61,7 @@ class WorkoutRoutineController extends Controller
 
     public function createWorkoutRoutineExerciseAssoc(CreateWorkoutRoutineExerciseAsssocRequest $request)
     {
-        foreach($request->all()['array_exercises'] as $item) {
+        foreach ($request->all()['array_exercises'] as $item) {
             RoutineExerciseAssocModel::create([
                 'id_workout_routine' => $request->all()['id_workout_routine'],
                 'id_exercise' => $item['idExercise'],
