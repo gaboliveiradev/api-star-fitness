@@ -41,7 +41,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/employee/{id}', [EmployeeController::class, 'delete'])->middleware(['auth:sanctum', 'ability:App:*,Employee:delete']);
 
     // Gym Member
-    Route::get('/gym-member', [GymMemberController::class, 'getAll']);
+    Route::get('/gym-member', [GymMemberController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,GymMember:select']);
     Route::post('/gym-member', [GymMemberController::class, 'create']);
     Route::put('/gym-member/{id}', [GymMemberController::class, 'update']);
     Route::delete('/gym-member/{id}', [GymMemberController::class, 'delete']);
