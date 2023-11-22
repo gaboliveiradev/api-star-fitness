@@ -61,6 +61,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Type
     Route::get('/type', [TypeController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Plan:select']);
     Route::post('/type', [TypeController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Plan:insert']);
+    Route::get('/type/{id}', [TypeController::class, 'getById'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
     Route::put('/type/{id}', [TypeController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*,Plan:update']);
     Route::delete('/type/{id}', [TypeController::class, 'delete'])->middleware(['auth:sanctum', 'ability:App:*,Plan:delete']);
 

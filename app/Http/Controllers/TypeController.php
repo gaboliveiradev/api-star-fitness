@@ -16,6 +16,13 @@ class TypeController extends Controller
         return $this->success('Types', $type, 200);
     }
 
+    public function getById($id) 
+    {
+        $type = TypeModel::find($id);
+
+        return $this->success('Type Bt Id', $type, 200);
+    }
+
     public function create(CreateTypeRequest $request)
     {
         $type = TypeModel::create($request->all());
