@@ -12,6 +12,7 @@ return new class extends Migration
             $table->uuid('id')->unique()->primary();
             $table->foreignUuid('id_billing')->constrained('billings')->onDelete('cascade')->nullable(false);
             $table->string('payment_method')->nullable(false);
+            $table->date('payment_date')->nullable(false);
             $table->double('amount')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();

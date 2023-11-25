@@ -11,6 +11,7 @@ class CreatePaymentRequest extends FormRequest
         return [
             'id_billing' => ['required', 'string'],
             'payment_method' => ['required', 'string'],
+            'payment_date' => ['required', 'string'],
             'amount' => 'required',
         ];
     }

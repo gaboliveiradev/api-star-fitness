@@ -9,8 +9,7 @@ class CreateBillingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'invoice_date' => ['required'],
-            'due_date' => ['required'],
+            'pay_day' => ['required'],
             'id_type_enrollment' => ['required', 'string'],
             'id_gym_member' => ['required', 'string'],
         ];

@@ -27,7 +27,7 @@ class EmployeeSeeder extends Seeder
 
         $person = PersonModel::create([
             'name' => 'Jonatha Oliveira',
-            'email' => 'jonatha.oliveira@gmail.com',
+            'email' => 'jonatha.oliveira@academiastarfitness.com.br',
             'password' => '123456',
             'document' => '23498387680',
             'phone' => '14991877091',

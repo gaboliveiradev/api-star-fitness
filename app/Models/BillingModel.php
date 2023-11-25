@@ -14,9 +14,7 @@ class BillingModel extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'invoice_date',
-        'due_date',
-        'payment_date',
+        'pay_day',
         'id_type_enrollment',
         'id_gym_member',
         'active'
