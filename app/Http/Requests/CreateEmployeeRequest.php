@@ -18,7 +18,7 @@ class CreateEmployeeRequest extends FormRequest
             'gender' => ['required', 'string', 'size:1'],
             'cref' => ['required', 'string'],
             'observation' => [],
-            'id_address' => ['required', 'string'],
+            'id_address' => ['required', 'integer'],
         ];
     }
 }

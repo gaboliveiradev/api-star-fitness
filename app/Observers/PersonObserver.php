@@ -10,7 +10,6 @@ class PersonObserver
 {
     public function creating(PersonModel $model):void
     {
-        $model->id = Uuid::uuid4();
         $model->password = Hash::make($model->password);
     }
 }

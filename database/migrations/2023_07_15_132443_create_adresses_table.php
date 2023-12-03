@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('adresses', function (Blueprint $table) {
-            $table->uuid('id')->unique()->primary();
+            $table->id();
             $table->string('street', 100)->nullable(false);
             $table->string('district', 100)->nullable(false);
             $table->string('number', 20)->default(null);

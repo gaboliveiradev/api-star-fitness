@@ -11,8 +11,6 @@ class ExerciseModel extends Model
 
     protected $table = 'exercises';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'name',
         'exercise_gif',

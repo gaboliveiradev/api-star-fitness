@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AccessGroupController;
 use App\Http\Controllers\AccessGroupEmployeeAssocController;
-use App\Http\Controllers\DietController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PersonController;
@@ -59,8 +58,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // Payment
     Route::post('/payment', [PaymentController::class, 'create']);
 
-    // servidor
-
     // Type
     Route::get('/type', [TypeController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,Plan:select']);
     Route::post('/type', [TypeController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Plan:insert']);
@@ -74,11 +71,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/exercise', [ExerciseController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Exercise:insert']);
     Route::delete('/exercise/{id}', [ExerciseController::class, 'delete'])->middleware(['auth:sanctum', 'ability:App:*,Exercise:delete']);
     Route::put('/exercise/{id}', [ExerciseController::class, 'update'])->middleware(['auth:sanctum', 'ability:App:*,Exercise:update']);
-
-    // Diet
-    Route::get('/diet', [DietController::class, 'getAll']);
-    Route::get('/diet/gym-member/{id}', [DietController::class, 'getAllByIdGymMember'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
-    Route::post('/diet', [DietController::class, 'create'])->middleware(['auth:sanctum', 'ability:App:*,Mobile:*']);
 
     // Workout Routine 
     Route::get('/workout-routine', [WorkoutRoutineController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,WorkoutRoutine:select']);

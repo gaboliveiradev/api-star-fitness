@@ -11,8 +11,6 @@ class GymMemberModel extends Model
 
     protected $table = 'gym_members';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'id_person',
         'id_type_enrollment',

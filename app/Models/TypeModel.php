@@ -11,8 +11,6 @@ class TypeModel extends Model
 
     protected $table = 'types';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'name',
         'number_of_days',

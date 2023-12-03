@@ -9,7 +9,7 @@ class UpdateGymMemberRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_type_enrollment' => ['string']
+            'id_type_enrollment' => ['integer']
         ];
     }
 }

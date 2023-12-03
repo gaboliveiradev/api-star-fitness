@@ -10,9 +10,7 @@ class EmployeeModel extends Model
     use HasFactory;
 
     protected $table = 'employees';
-
-    public $incrementing = false;
-
+    
     protected $fillable = [
         'id_person',
         'cref',

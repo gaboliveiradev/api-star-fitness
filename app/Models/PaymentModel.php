@@ -11,8 +11,6 @@ class PaymentModel extends Model
 
     protected $table = 'payments';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'id_billing',
         'payment_method',

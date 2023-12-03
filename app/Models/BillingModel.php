@@ -10,9 +10,7 @@ class BillingModel extends Model
     use HasFactory;
     
     protected $table = 'billings';
-
-    public $incrementing = false;
-
+    
     protected $fillable = [
         'pay_day',
         'id_type_enrollment',

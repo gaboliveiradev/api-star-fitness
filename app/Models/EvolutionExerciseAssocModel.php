@@ -11,8 +11,6 @@ class EvolutionExerciseAssocModel extends Model
 
     protected $table = 'evolutions_exercises_assoc';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'id_evolution',
         'id_exercise',

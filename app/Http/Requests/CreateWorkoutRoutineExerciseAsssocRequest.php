@@ -9,7 +9,7 @@ class CreateWorkoutRoutineExerciseAsssocRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_workout_routine' => ['required', 'string'],
+            'id_workout_routine' => ['required', 'integer'],
             'array_exercises' => ['required', 'array'],
         ];
     }

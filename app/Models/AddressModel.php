@@ -11,8 +11,6 @@ class AddressModel extends Model
 
     protected $table = 'adresses';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'street',
         'district',

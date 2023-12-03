@@ -9,7 +9,7 @@ class CreatePaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_billing' => ['required', 'string'],
+            'id_billing' => ['required', 'integer'],
             'payment_method' => ['required', 'string'],
             'payment_date' => ['required', 'string'],
             'amount' => 'required',

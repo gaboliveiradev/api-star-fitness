@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('access_groups_employees_assoc', function (Blueprint $table) {
-            $table->foreignUuid('id_access_group')->constrained('access_groups')->onDelete('cascade')->nullable(false);
-            $table->foreignUuid('id_employee')->constrained('employees')->onDelete('cascade')->nullable(false);
+            $table->foreignId('id_access_group')->references('id')->on('access_groups')->nullable(false);
+            $table->foreignId('id_employee')->references('id')->on('employees')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });

@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('routines_exercises_assoc', function (Blueprint $table) {
-            $table->foreignUuid('id_workout_routine')->constrained('workouts_routines')->onDelete('cascade')->nullable(false);
-            $table->foreignUuid('id_exercise')->constrained('exercises')->onDelete('cascade')->nullable(false);
+            $table->foreignId('id_workout_routine')->references('id')->on('workouts_routines')->nullable(false);
+            $table->foreignId('id_exercise')->references('id')->on('exercises')->nullable(false);
             $table->string('week_day')->nullable(false);
             $table->integer('sets')->nullable(false); 
             $table->integer('repetitions')->nullable(false);

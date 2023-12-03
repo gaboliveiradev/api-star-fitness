@@ -12,10 +12,7 @@ class PersonModel extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'persons';
-    protected $keyType = 'uuid';
-
-    public $incrementing = false;
-
+    
     protected $fillable = [
         'name',
         'email',

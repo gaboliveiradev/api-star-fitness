@@ -11,8 +11,6 @@ class WorkoutRoutineModel extends Model
 
     protected $table = 'workouts_routines';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'name',
         'id_gym_member',

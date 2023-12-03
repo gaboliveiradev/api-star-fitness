@@ -10,7 +10,7 @@ class CreateEvolutionRequest extends FormRequest
     {
         return [
             "complete_date" => ['required', 'date'],
-            "id_gym_member" => ['required', 'string']
+            "id_gym_member" => ['required', 'integer']
         ];
     }
 }

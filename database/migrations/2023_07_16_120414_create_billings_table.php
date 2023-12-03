@@ -9,10 +9,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('billings', function (Blueprint $table) {
-            $table->uuid('id')->unique()->primary();
+            $table->id();
             $table->date('pay_day')->nullable(false);
-            $table->foreignUuid('id_type_enrollment')->constrained('types')->onDelete('cascade')->nullable(false);
-            $table->foreignUuid('id_gym_member')->constrained('gym_members')->onDelete('cascade')->nullable(false);
+            $table->foreignId('id_type_enrollment')->references('id')->on('types')->nullable(false);
+            $table->foreignId('id_gym_member')->references('id')->on('gym_members')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->timestamps();
         });

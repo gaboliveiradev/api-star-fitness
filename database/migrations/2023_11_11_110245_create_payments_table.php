@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->uuid('id')->unique()->primary();
-            $table->foreignUuid('id_billing')->constrained('billings')->onDelete('cascade')->nullable(false);
+            $table->id();
+            $table->foreignId('id_billing')->references('id')->on('billings')->nullable(false);
             $table->string('payment_method')->nullable(false);
             $table->date('payment_date')->nullable(false);
             $table->double('amount')->nullable(false);

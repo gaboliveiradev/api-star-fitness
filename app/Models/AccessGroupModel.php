@@ -11,8 +11,6 @@ class AccessGroupModel extends Model
 
     protected $table = 'access_groups';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'name',
         'abilities',

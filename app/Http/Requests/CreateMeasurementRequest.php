@@ -19,7 +19,7 @@ class CreateMeasurementRequest extends FormRequest
             "right_forearm" => [''], 
             "left_quadriceps" => [''], 
             "right_quadriceps" => [''], 
-            "id_evolution" => ['required', 'string'], 
+            "id_evolution" => ['required', 'integer'], 
         ];
     }
 }

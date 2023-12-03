@@ -11,8 +11,6 @@ class EvolutionModel extends Model
 
     protected $table = 'evolutions';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'complete_date',
         'id_gym_member',

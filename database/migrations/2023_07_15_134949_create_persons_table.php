@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('persons', function (Blueprint $table) {
-            $table->uuid('id')->unique()->primary();
+            $table->id();
             $table->string('name')->nullable(false);
             $table->string('email')->nullable(false);
             $table->timestamp('email_verified_at')->nullable();
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('birthday')->nullable(false);
             $table->string('gender', 1)->nullable(false);
             $table->string('photo_url')->nullable(true);
-            $table->foreignUuid('id_address')->constrained('adresses')->onDelete('cascade')->nullable(false);
+            $table->foreignId('id_address')->references('id')->on('adresses')->nullable(false);
             $table->boolean('active')->nullable(false)->default(true);
             $table->rememberToken();
             $table->timestamps();

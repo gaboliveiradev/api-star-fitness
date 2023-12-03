@@ -10,8 +10,8 @@ class CreateBillingRequest extends FormRequest
     {
         return [
             'pay_day' => ['required'],
-            'id_type_enrollment' => ['required', 'string'],
-            'id_gym_member' => ['required', 'string'],
+            'id_type_enrollment' => ['required', 'integer'],
+            'id_gym_member' => ['required', 'integer'],
         ];
     }
 }

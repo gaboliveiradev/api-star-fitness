@@ -11,8 +11,6 @@ class AccessGroupEmployeeAssocModel extends Model
 
     protected $table = 'access_groups_employees_assoc';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'id_access_group',
         'id_employee',

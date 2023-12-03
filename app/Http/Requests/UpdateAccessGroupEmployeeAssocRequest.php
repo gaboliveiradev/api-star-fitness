@@ -9,8 +9,8 @@ class UpdateAccessGroupEmployeeAssocRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_access_group' => ['required', 'string'],
-            'id_employee' => ['required', 'string']
+            'id_access_group' => ['required', 'integer'],
+            'id_employee' => ['required', 'integer']
         ];
     }
 }

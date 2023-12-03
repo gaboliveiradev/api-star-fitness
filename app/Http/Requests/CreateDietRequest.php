@@ -10,7 +10,7 @@ class CreateDietRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'id_gym_member' => ['required', 'string']
+            'id_gym_member' => ['required', 'integer']
         ];
     }
 }

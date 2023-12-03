@@ -20,8 +20,8 @@ class CreateGymMemberRequest extends FormRequest
             'weight_kg' => ['string'],
             'photo_url' => ['string'],
             'observation' => ['string'],
-            'id_address' => ['required', 'string'],
-            'id_type_enrollment' => ['required', 'string']
+            'id_address' => ['required', 'integer'],
+            'id_type_enrollment' => ['required', 'integer']
         ];
     }
 }

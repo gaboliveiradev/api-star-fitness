@@ -9,8 +9,8 @@ class CreateWorkoutRoutineExerciseAssocMobileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_workout_routine' => ['required', 'string'],
-            'id_exercise' => ['required', 'string'],
+            'id_workout_routine' => ['required', 'integer'],
+            'id_exercise' => ['required', 'integer'],
             'week_day' => ['required', 'string'],
             'sets' => ['required', 'integer'],
             'repetitions' => ['required', 'integer'],

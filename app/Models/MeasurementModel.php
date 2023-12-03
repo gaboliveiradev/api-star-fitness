@@ -11,8 +11,6 @@ class MeasurementModel extends Model
 
     protected $table = 'measurements';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'chest',
         'glute',

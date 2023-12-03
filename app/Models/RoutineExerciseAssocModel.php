@@ -11,8 +11,6 @@ class RoutineExerciseAssocModel extends Model
 
     protected $table = 'routines_exercises_assoc';
 
-    public $incrementing = false;
-
     protected $fillable = [
         'id_workout_routine',
         'id_exercise',
