@@ -12,11 +12,11 @@ class Controller extends BaseController
 
     public function success($message, $data, $statusCode)
     {
-        return response()->json(['success_message' => $message, 'data' => $data], $statusCode);
+        return response()->json(['message' => $message, 'data' => $data], $statusCode);
     }
 
     public function error($message, $statusCode)
     {
-        return response()->json(['error_message' => $message], $statusCode);
+        return response()->json(['message' => $message], $statusCode);
     }
 }

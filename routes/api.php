@@ -18,6 +18,9 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\EmployeeController;
 
 Route::middleware('auth:sanctum')->group(function () {
+    //Enroll
+    Route::post('/enroll/gym-member', [GymMemberController::class, 'enrollGymMember']);
+
     // Access Group
     Route::get('/access-group', [AccessGroupController::class, 'getAll'])->middleware(['auth:sanctum', 'ability:App:*,AccessGroup:select']);
     Route::post('/access-group/employee', [AccessGroupEmployeeAssocController::class, 'createAccessGroupEmployeeAssoc'])->middleware(['auth:sanctum', 'ability:App:*,AccessGroup:insert']);
