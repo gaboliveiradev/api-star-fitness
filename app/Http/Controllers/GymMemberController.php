@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateGymMemberRequest;
 use App\Http\Requests\UpdateGymMemberRequest;
+use App\Mail\Welcome;
 use App\Models\AddressModel;
 use App\Models\BillingModel;
 use App\Models\GymMemberModel;
@@ -11,6 +12,8 @@ use App\Models\PaymentModel;
 use App\Models\PersonModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+
 
 class GymMemberController extends Controller
 {
@@ -19,6 +22,13 @@ class GymMemberController extends Controller
     public function __construct()
     {
         $this->gymMemberModel = new GymMemberModel();
+    }
+
+    private function sendEmail($idPerson)
+    {
+        $person = PersonModel::find($idPerson);
+
+        Mail::to($person->email)->send(new Welcome($person));
     }
 
     public function enrollGymMember(Request $request)
@@ -33,9 +43,8 @@ class GymMemberController extends Controller
             'state' => 'required|string',
             // person
             'name' => 'required|string',
-            'email' => 'required|string',
-            'password' => 'required',
-            'document' => 'required|size:11',
+            'email' => 'required|string|email',
+            'document' => 'required|size:11|unique:persons,document',
             'phone' => 'required|size:11',
             'birthday' => 'required|date',
             'gender' => 'required|string|size:1',
@@ -109,35 +118,10 @@ class GymMemberController extends Controller
 
         DB::commit();
 
-        return $this->success('Aluno Matriculado!', $gymMember, 201);
+        $this->sendEmail($person->id);
+
+        return $this->success('Aluno Matriculado.', $gymMember, 201);
     }
-
-    /*public function create(Request $request) 
-    {
-        $person = PersonModel::create([
-            'name' => $request->all()['name'],
-            'email' => $request->all()['email'],
-            'password' => Hash::make('123456'),
-            'document' => $request->all()['document'],
-            'phone' => $request->all()['phone'],
-            'birthday' => $request->all()['birthday'],
-            'gender' => $request->all()['gender'],
-            'photo_url' => 'https://www.promoview.com.br/uploads/images/unnamed%2819%29.png',
-            'id_address' => $request->all()['id_address'],
-        ]);
-
-        $gymMember = GymMemberModel::create([
-            'id_person' => $person->id,
-            'height_cm' => $request->all()['height_cm'],
-            'weight_kg' => $request->all()['weight_kg'],
-            'observation' => $request->all()['observation'],
-            'id_type_enrollment' => $request->all()['id_type_enrollment'],
-        ]);
-
-        $gymMember['person'] = $person;
-
-        return $this->success('Gym Member Created', $gymMember, 201);
-    }*/
 
     public function getAll()
     {
